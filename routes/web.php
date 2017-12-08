@@ -22,3 +22,4 @@ Route::get('/questions', 'QuestionController@index');
 Route::get('/quizzes', 'CollectionsController@index');
 Route::get('/quizzes/quiz/{collection}', 'CollectionsController@show');
 Route::get('/quizzes/quiz/{collection}/questions', 'CollectionsController@questions');
+Route::post('/quizzes/quiz/{collection}/results', 'CollectionsController@results');

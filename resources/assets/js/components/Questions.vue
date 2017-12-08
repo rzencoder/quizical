@@ -1,10 +1,11 @@
 <template>
-    <div class="container">
-        <div v-bind="collection">{{collection.collection}}
+    <div class="container">   
+        <div v-bind="collection">
+            <div class="panel-heading">{{collection.collection}}</div>
             <div>{{ collection.questions[number].question }}</div>
-                <div :key="answer.id" @click="checkAnswer" v-for="answer in collection.questions[number].answers">{{ answer.answer }}</div>            
-            </div>
+            <div :key="answer.id" @click="checkAnswer" v-for="answer in collection.questions[number].answers">{{ answer.answer }}</div>            
         </div>
+        <div v-bind="message">{{ message }}</div>
     </div>
 </template>
 
@@ -15,13 +16,34 @@
                collection: '',
                number: 0,
                score: 0,
+               message: ''
            }
         },
 
         methods: {
             checkAnswer (event) {
-                console.log(event.target)
-                this.number++;
+                console.log(event);
+                this.collection.questions[this.number].answers.forEach(answer => {
+                    if(answer.answer === event.target.innerHTML && answer.correct){
+                        this.score++;
+                    }
+                });
+                if (this.number + 1 >= this.collection.questions.length) {
+                    this.endQuiz();
+                } else {
+                     this.number++;
+                }
+               
+                console.log(this.score);
+            },
+
+            endQuiz () {
+                console.log('End')
+                axios.post(window.location.pathname + '/results', {
+                    score: this.score
+                }).then(response => {
+                    console.log(response)
+                })
             }
         },
 
@@ -33,6 +55,7 @@
                 console.log(this.collection);
             })
         }
+
     }
 </script>
 

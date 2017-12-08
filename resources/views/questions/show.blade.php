@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div id="vquest" class="panel-heading">Categories</div>
+                
                 {{--  @foreach($collection->questions as $question)
                     <div class="panel-body">              
                         <div>{{ $question->question }}</div>
