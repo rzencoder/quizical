@@ -6,6 +6,7 @@
             <div :key="answer.id" @click="checkAnswer" v-for="answer in collection.questions[number].answers">{{ answer.answer }}</div>            
         </div>
         <div v-bind="message">{{ message }}</div>
+        <modal></modal>
     </div>
 </template>
 

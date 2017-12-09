@@ -31,4 +31,21 @@ class CollectionsController extends Controller
     public function results (Collection $collection) {
         return ['message' => 'Result Submitted'];
     }
+
+    public function newquestion(Collection $collection)
+    {
+        $collection = Collection::latest()->get()->first();
+        return view('dashboard.new', compact('collection'));
+    }
+
+    public function create()
+    {
+        $collection = Collection::create([
+            'collection' => request('collection'),
+            'author' => 'roman'
+        ]);
+
+        return redirect("/create-question/{$collection->id}");
+    }
+
 }
