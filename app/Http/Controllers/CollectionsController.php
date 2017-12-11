@@ -33,10 +33,6 @@ class CollectionsController extends Controller
         return compact('collection', 'questions', 'answers');
     }
 
-    public function results (Collection $collection) {
-        return ['message' => 'Result Submitted'];
-    }
-
     public function newquestion(Collection $collection)
     {
         $collection = Collection::latest()->get()->first();

@@ -17,6 +17,7 @@
                collection: '',
                number: 0,
                score: 0,
+               time: 0,
                message: ''
            }
         },
@@ -41,7 +42,8 @@
             endQuiz () {
                 console.log('End')
                 axios.post(window.location.pathname + '/results', {
-                    score: this.score
+                    score: this.score, 
+                    time: this.time
                 }).then(response => {
                     console.log(response)
                 })

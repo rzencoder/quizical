@@ -43543,6 +43543,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             collection: '',
             number: 0,
             score: 0,
+            time: 0,
             message: ''
         };
     },
@@ -43569,7 +43570,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         endQuiz: function endQuiz() {
             console.log('End');
             axios.post(window.location.pathname + '/results', {
-                score: this.score
+                score: this.score,
+                time: this.time
             }).then(function (response) {
                 console.log(response);
             });

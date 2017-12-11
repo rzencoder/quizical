@@ -32,9 +32,19 @@ class User extends Authenticatable
         return $this->hasMany(Collection::class);
     }
 
+    public function scores()
+    {
+        return $this->hasMany(Score::class);
+    }
+
     public function publish(Collection $collection)
     {
         return $this->collections()->save($collection);
+    }
+
+    public function saveScore(Score $score)
+    {
+        return $this->scores()->save($score);
     }
 
 }
