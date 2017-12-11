@@ -20,10 +20,20 @@
 
             <div>
                 <h2>Your Quizzes</h2>
-                {{$quizzes}}
-                <ul>
-                    <li></li>
-                </ul>
+                @if(isset($quizzes))
+                    @foreach($quizzes as $quiz)
+                    <div>
+                        <div>{{ $quiz->collection }}</div>
+                        <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
+                        <form method="POST" action="/delete-quiz/{{$quiz->id}}">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <button class="btn btn-primary" type="submit">Delete</button>
+                        </form>
+                    </div>
+                    @endforeach
+                @endif
+                <h3>Create New Quiz</h3>
                 <form action="/create-quiz" method="POST">
                      {{ csrf_field() }}
                     <div class="form-control">

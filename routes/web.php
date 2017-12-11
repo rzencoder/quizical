@@ -25,5 +25,10 @@ Route::get('/quizzes/quiz/{collection}/questions', 'CollectionsController@questi
 Route::post('/quizzes/quiz/{collection}/results', 'CollectionsController@results');
 Route::get('/create-question/{collection}', 'CollectionsController@newquestion');
 Route::post('/create-quiz', 'CollectionsController@create');
-
+Route::get('/edit-quiz/{collection}', 'CollectionsController@edit');
+Route::post('/edit-quiz/{collection}', 'CollectionsController@changeQuizName');
 Route::post('/create-question/{collection}', 'QuestionController@store');
+Route::get('/edit-quiz/{collection}/question/{question}', 'QuestionController@showEditQuestion');
+Route::post('/edit-quiz/{collection}/question/{question}', 'QuestionController@editQuestion');
+Route::delete('/delete-quiz/{collection}/question/{question}', 'QuestionController@destroy');
+Route::delete('/delete-quiz/{collection}', 'CollectionsController@destroy');

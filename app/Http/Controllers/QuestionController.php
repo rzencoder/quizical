@@ -24,4 +24,32 @@ class QuestionController extends Controller
         
         return redirect("/create-question/{$collection->id}");
     }
+
+    public function showEditQuestion(Collection $collection, Question $question)
+    {
+        return view('questions.edit', compact('collection', 'question'));
+    }
+
+    public function editQuestion(Collection $collection, Question $question)
+    {
+        $question->question = request('question');
+        $question->save();
+        $answers = $question->answers()->get();
+        foreach($answers as $answer){
+            $answer->answer = request("$answer->id");
+            $answer->save();
+        }
+        return redirect('home');
+    }
+
+    public function destroy(Collection $collection, Question $question)
+    {
+        $answers = $question->answers()->get();
+        foreach ($answers as $answer) {
+            $answer->delete();
+        }
+        $question->delete();
+
+        return redirect('home');
+    }
 }
