@@ -7,6 +7,11 @@ use App\Collection;
 
 class CollectionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index', 'show', 'questions', 'answers']);
+    }
+
     public function index()
     {
         $collections = Collection::latest()->get();
@@ -40,10 +45,10 @@ class CollectionsController extends Controller
 
     public function create()
     {
-        $collection = Collection::create([
-            'collection' => request('collection'),
-            'author' => 'roman'
-        ]);
+        
+        $collection = auth()->user()->publish(
+            new Collection(request(['collection']))
+        );
 
         return redirect("/create-question/{$collection->id}");
     }

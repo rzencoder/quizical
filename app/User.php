@@ -26,4 +26,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function collections()
+    {
+        return $this->hasMany(Collection::class);
+    }
+
+    public function publish(Collection $collection)
+    {
+        return $this->collections()->save($collection);
+    }
+
 }

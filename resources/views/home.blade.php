@@ -20,12 +20,14 @@
 
             <div>
                 <h2>Your Quizzes</h2>
+                {{$quizzes}}
                 <ul>
                     <li></li>
                 </ul>
                 <form action="/create-quiz" method="POST">
                      {{ csrf_field() }}
                     <div class="form-control">
+
                         <input type="text" name="collection" id="" placeholder="New Quiz Name">
                         <button type="submit">Create</button>
                     </div>
