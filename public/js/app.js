@@ -43513,7 +43513,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody {\n  background: orange;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n  background: orange;\n}\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  background: #fff;\n  border: 3px solid blue;\n  z-index: 3;\n  position: relative;\n}\n", ""]);
 
 // exports
 
@@ -43536,6 +43536,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43544,7 +43552,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             number: 0,
             score: 0,
             time: 0,
-            message: ''
+            message: '',
+            showModal: false
         };
     },
 
@@ -43568,24 +43577,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log(this.score);
         },
         endQuiz: function endQuiz() {
-            console.log('End');
+            var _this2 = this;
+
             axios.post(window.location.pathname + '/results', {
                 score: this.score,
                 time: this.time
             }).then(function (response) {
                 console.log(response);
+                _this2.displayResult();
             });
+        },
+        displayResult: function displayResult() {
+            var overlay = document.createElement("div");
+            overlay.classList.add('overlay');
+            document.body.appendChild(overlay);
+            this.showModal = true;
         }
     },
 
     mounted: function mounted() {
-        var _this2 = this;
+        var _this3 = this;
 
         console.log('Component mounted.');
         axios.get(window.location.pathname + '/questions').then(function (response) {
 
-            _this2.collection = response.data.collection;
-            console.log(_this2.collection);
+            _this3.collection = response.data.collection;
+            console.log(_this3.collection);
         });
     }
 });
@@ -43598,13 +43615,10 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "container" },
-    [
+  return _c("div", [
+    _c("div", { staticClass: "container" }, [
       _c(
         "div",
-        _vm._b({}, "div", _vm.collection, false),
         [
           _c("div", { staticClass: "panel-heading" }, [
             _vm._v(_vm._s(_vm.collection.collection))
@@ -43627,16 +43641,30 @@ var render = function() {
         2
       ),
       _vm._v(" "),
-      _c("div", _vm._b({}, "div", _vm.message, false), [
-        _vm._v(_vm._s(_vm.message))
-      ]),
-      _vm._v(" "),
-      _c("modal")
-    ],
-    1
-  )
+      _c("div", [_vm._v(_vm._s(_vm.message))])
+    ]),
+    _vm._v(" "),
+    _c("div", { class: { display: !_vm.showModal } }, [
+      _c("div", { staticClass: "modal-container" }, [
+        _c("h2", [_vm._v("You Scored: " + _vm._s(_vm.score))]),
+        _vm._v(" "),
+        _vm._m(0, false, false)
+      ])
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("a", { attrs: { href: "/quizzes" } }, [
+      _c("button", { staticClass: "btn btn-primary" }, [
+        _vm._v("Back to Quizzes")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

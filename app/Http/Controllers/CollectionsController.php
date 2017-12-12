@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Collection;
 
@@ -9,17 +10,26 @@ class CollectionsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index', 'show', 'questions', 'answers']);
+        $this->middleware('auth');
     }
 
     public function index()
     {
         $collections = Collection::latest()->get();
-        return view('collections.index', compact('collections'));
+        $user = Auth::user();
+        $scores = $user->scores()->get();
+        return view('collections.index', compact('collections', 'scores'));
     }
 
     public function show(Collection $collection)
     {
+        $user = Auth::user();
+        $scores = $user->scores()->get();
+        foreach ($scores as $score) {
+            if ($collection->id === $score->collection_id) {
+                return redirect('/quizzes');
+            }
+        } 
         return view('questions.show', compact('collection'));
     }
 
@@ -35,6 +45,7 @@ class CollectionsController extends Controller
 
     public function newquestion(Collection $collection)
     {
+        
         $collection = Collection::latest()->get()->first();
         return view('dashboard.new', compact('collection'));
     }

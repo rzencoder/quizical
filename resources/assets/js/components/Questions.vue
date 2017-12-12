@@ -1,13 +1,21 @@
 <template>
+<div>
     <div class="container">   
-        <div v-bind="collection">
+        <div>
             <div class="panel-heading">{{collection.collection}}</div>
             <div>{{ collection.questions[number].question }}</div>
             <div :key="answer.id" @click="checkAnswer" v-for="answer in collection.questions[number].answers">{{ answer.answer }}</div>            
         </div>
-        <div v-bind="message">{{ message }}</div>
-        <modal></modal>
+        <div>{{ message }}</div>
+        
     </div>
+    <div :class="{'display': !showModal}">
+        <div class="modal-container">
+            <h2 >You Scored: {{ score }}</h2>
+            <a href="/quizzes"><button class="btn btn-primary">Back to Quizzes</button></a>
+        </div>
+    </div>
+</div>
 </template>
 
 <script>
@@ -18,7 +26,8 @@
                number: 0,
                score: 0,
                time: 0,
-               message: ''
+               message: '',
+               showModal: false
            }
         },
 
@@ -40,13 +49,21 @@
             },
 
             endQuiz () {
-                console.log('End')
+
                 axios.post(window.location.pathname + '/results', {
                     score: this.score, 
                     time: this.time
                 }).then(response => {
-                    console.log(response)
+                    console.log(response);
+                    this.displayResult();
                 })
+            },
+
+            displayResult () {          
+                var overlay = document.createElement("div");
+                overlay.classList.add('overlay');
+                document.body.appendChild(overlay);
+                this.showModal = true;
             }
         },
 
@@ -67,5 +84,27 @@
     body {
         background: orange;
     }
+
+    .overlay {
+        position: absolute;
+        top:0;
+        background: #000;
+        opacity: 0.5;
+        width: 100%;
+        height: 100%;
+    }
+
+    .display {
+        display: none;
+    }
+
+.modal-container {
+    width: 300px;
+    height: 200px;
+    background: #fff;
+    border: 3px solid blue;
+    z-index: 3;
+    position: relative;
+}
 
 </style>
