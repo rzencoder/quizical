@@ -4,52 +4,55 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Question;
-use App\Collection;
+use App\Quiz;
+use App\Score;
 
 class QuestionController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        $questions = Question::latest()->get();    
-        return view('questions.index', compact('questions'));
+        $quizzes = Quiz::latest()->get();
+        $user = Auth::user();
+        $scores = $user->scores()->get();
+        return view('quiz.index', compact('quizzes', 'scores'));
     }
 
-    public function store(Collection $collection)
-    {      
-        $question = $collection->addQuestion(request('question'));
-        $question->addAnswers(request('correct'), 1);
-        $question->addAnswers(request('wrong1'), 0);
-        $question->addAnswers(request('wrong2'), 0);
-        $question->addAnswers(request('wrong3'), 0);
-        
-        return redirect("/create-question/{$collection->id}");
-    }
-
-    public function showEditQuestion(Collection $collection, Question $question)
+    public function show(Quiz $quiz)
     {
-        return view('questions.edit', compact('collection', 'question'));
-    }
-
-    public function editQuestion(Collection $collection, Question $question)
-    {
-        $question->question = request('question');
-        $question->save();
-        $answers = $question->answers()->get();
-        foreach($answers as $answer){
-            $answer->answer = request("$answer->id");
-            $answer->save();
+        $user = Auth::user();
+        $scores = $user->scores()->get();
+        foreach ($scores as $score) {
+            if ($quiz->id === $score->quiz_id) {
+                return redirect('/quizzes');
+            }
         }
-        return redirect('home');
+        return view('questions.show', compact('quiz'));
     }
 
-    public function destroy(Collection $collection, Question $question)
+    public function questions(Quiz $quiz)
     {
-        $answers = $question->answers()->get();
-        foreach ($answers as $answer) {
-            $answer->delete();
+        $questions = $quiz->questions;
+        $answers = [];
+        foreach ($questions as $question) {
+            array_push($answers, $question->answers);
         }
-        $question->delete();
-
-        return redirect('home');
+        return compact('quiz', 'questions', 'answers');
     }
+
+    public function results(Quiz $quiz)
+    {
+        $score = request('score');
+        $time = request('time');
+        $quiz_id = $quiz->id;
+        $quiz = auth()->user()->saveScore(
+            new Score(compact('score', 'time', 'quiz_id'))
+        );
+        return ['message' => 'Result Submitted'];
+    }
+
 }

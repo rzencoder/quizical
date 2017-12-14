@@ -9,7 +9,7 @@
                 @component('components.who')
                         
                 @endcomponent  
-                <div class="panel-heading">Welcome Dashboard</div>
+                <div class="panel-heading">User Dashboard</div>
                 <a href="/quizzes">
                     <button class="btn btn-primary">See Latest Quizzes</button>
                 </a>

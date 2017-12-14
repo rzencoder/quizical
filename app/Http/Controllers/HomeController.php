@@ -26,9 +26,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = Auth::user();
-        $quizzes = $user->collections()->get();
-        return view('home', compact('quizzes'));
-        
+        // $user = Auth::user();
+        // $quizzes = $user->collections()->get();
+        return view('home', compact('quizzes'));      
     }
 }

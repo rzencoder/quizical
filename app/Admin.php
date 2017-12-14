@@ -28,19 +28,19 @@ class Admin extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function collections()
+    public function quizzes()
     {
-        return $this->hasMany(Collection::class);
+        return $this->hasMany(Quiz::class);
     }
 
     public function scores()
     {
-        return $this->hasMany(Score::class);
+        return $this->hasMany(Quiz::class);
     }
 
-    public function publish(Collection $collection)
+    public function publish(Quiz $quiz)
     {
-        return $this->collections()->save($collection);
+        return $this->quizzes()->save($quiz);
     }
 
     public function saveScore(Score $score)

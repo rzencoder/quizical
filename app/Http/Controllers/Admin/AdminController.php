@@ -3,7 +3,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Collection;
+use App\Quiz;
 use App\User;
 
 class AdminController extends Controller
@@ -25,7 +25,9 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $user = Auth::user();
+        $quizzes = $user->quizzes()->get();
+        return view('admin', compact('quizzes'));
 
     }
 }

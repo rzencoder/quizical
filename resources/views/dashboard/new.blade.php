@@ -5,9 +5,9 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <h2>{{ $collection->collection }}</h2>
+                <h2>{{ $quiz->quiz }}</h2>
                 <h3>New Question</h3>          
-                <form method="POST" action="/create-question/{{$collection->id}}">
+                <form method="POST" action="/create-question/{{$quiz->id}}">
                     {{ csrf_field()}}
                     @if(isset($message))
                         {{$message}}

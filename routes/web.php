@@ -18,23 +18,24 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::get('/questions', 'QuestionController@index');
-Route::get('/quizzes', 'CollectionsController@index');
-Route::get('/quizzes/quiz/{collection}', 'CollectionsController@show');
-Route::get('/quizzes/quiz/{collection}/questions', 'CollectionsController@questions');
-Route::post('/quizzes/quiz/{collection}/results', 'ScoreController@store');
-Route::get('/create-question/{collection}', 'CollectionsController@newquestion');
-Route::post('/create-quiz', 'CollectionsController@create');
-Route::get('/edit-quiz/{collection}', 'CollectionsController@edit');
-Route::post('/edit-quiz/{collection}', 'CollectionsController@changeQuizName');
-Route::post('/create-question/{collection}', 'QuestionController@store');
-Route::get('/edit-quiz/{collection}/question/{question}', 'QuestionController@showEditQuestion');
-Route::post('/edit-quiz/{collection}/question/{question}', 'QuestionController@editQuestion');
-Route::delete('/delete-quiz/{collection}/question/{question}', 'QuestionController@destroy');
-Route::delete('/delete-quiz/{collection}', 'CollectionsController@destroy');
 
-Route::get('/show-results/{collection}', 'ScoreController@show');
+Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+
+Route::get('/quizzes', 'QuestionController@index');
+Route::get('/quizzes/quiz/{quiz}', 'QuestionController@show');
+Route::get('/quizzes/quiz/{quiz}/questions', 'QuestionController@questions');
+Route::post('/quizzes/quiz/{quiz}/results', 'QuestionController@results');
+
+Route::get('/create-question/{quiz}', 'QuizController@newquestion');
+Route::post('/create-quiz', 'QuizController@create');
+Route::get('/edit-quiz/{quiz}', 'QuizController@edit');
+Route::post('/edit-quiz/{quiz}', 'QuizController@changeQuizName');
+Route::post('/create-question/{quiz}', 'QuizController@store');
+Route::get('/edit-quiz/{quiz}/question/{question}', 'QuizController@showEditQuestion');
+Route::post('/edit-quiz/{quiz}/question/{question}', 'QuizController@editQuestion');
+Route::delete('/delete-quiz/{quiz}/question/{question}', 'QuizController@destroyQuestion');
+Route::delete('/delete-quiz/{quiz}', 'QuizController@destroy');
+Route::get('/show-results/{quiz}', 'QuizController@show');
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

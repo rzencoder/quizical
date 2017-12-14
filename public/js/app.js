@@ -43548,7 +43548,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
         return {
-            collection: '',
+            quiz: '',
             number: 0,
             score: 0,
             time: 0,
@@ -43563,12 +43563,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var _this = this;
 
             console.log(event);
-            this.collection.questions[this.number].answers.forEach(function (answer) {
+            this.quiz.questions[this.number].answers.forEach(function (answer) {
                 if (answer.answer === event.target.innerHTML && answer.correct) {
                     _this.score++;
                 }
             });
-            if (this.number + 1 >= this.collection.questions.length) {
+            if (this.number + 1 >= this.quiz.questions.length) {
                 this.endQuiz();
             } else {
                 this.number++;
@@ -43601,8 +43601,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         console.log('Component mounted.');
         axios.get(window.location.pathname + '/questions').then(function (response) {
 
-            _this3.collection = response.data.collection;
-            console.log(_this3.collection);
+            _this3.quiz = response.data.quiz;
+            console.log(_this3.quiz);
         });
     }
 });
@@ -43621,16 +43621,12 @@ var render = function() {
         "div",
         [
           _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(_vm.collection.collection))
+            _vm._v(_vm._s(_vm.quiz.quiz))
           ]),
           _vm._v(" "),
-          _c("div", [
-            _vm._v(_vm._s(_vm.collection.questions[_vm.number].question))
-          ]),
+          _c("div", [_vm._v(_vm._s(_vm.quiz.questions[_vm.number].question))]),
           _vm._v(" "),
-          _vm._l(_vm.collection.questions[_vm.number].answers, function(
-            answer
-          ) {
+          _vm._l(_vm.quiz.questions[_vm.number].answers, function(answer) {
             return _c(
               "div",
               { key: answer.id, on: { click: _vm.checkAnswer } },

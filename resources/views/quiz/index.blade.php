@@ -6,18 +6,18 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Latest Quizzes</div>
-                @foreach($collections as $collection)
+                @foreach($quizzes as $quiz)
                     @for($i = 0; $i < count($scores); $i++)
-                        @if($scores[$i]->collection_id === $collection ->id)
+                        @if($scores[$i]->quiz_id === $quiz ->id)
                             <div class="panel-body">
-                                <div> {{ $collection->collection }} 
+                                <div> {{ $quiz->quiz }} 
                                      <span>Score: {{ $scores[$i]->score }}</span>
                                 </div>                     
                             </div>
                             <?php break;?>
                         @elseif($i === count($scores) - 1)
                             <div class="panel-body">
-                                <a href="quizzes/quiz/{{$collection->id}}"> {{ $collection->collection }} </a>
+                                <a href="quizzes/quiz/{{$quiz->id}}"> {{ $quiz->quiz }} </a>
                             </div>
                         @endif
                     @endfor               

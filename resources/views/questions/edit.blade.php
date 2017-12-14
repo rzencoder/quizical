@@ -10,7 +10,7 @@
                         <div>{{ $message }}</div>
                     @endif
                     <div class="panel-body">
-                        <form action="/edit-quiz/{{$collection->id}}/question/{{$question->id}}" method="post">
+                        <form action="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}" method="post">
                         {{ csrf_field() }}
                             <input name="question" value="{{ $question->question }}"></input>
                             @foreach($question->answers()->get() as $answer)

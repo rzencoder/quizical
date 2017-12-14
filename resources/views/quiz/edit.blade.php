@@ -10,24 +10,24 @@
                         <div>{{ $message }}</div>
                     @endif
                     <div class="panel-body">
-                        <form action="/edit-quiz/{{$collection->id}}" method="post">
+                        <form action="/edit-quiz/{{$quiz->id}}" method="post">
                         {{ csrf_field() }}
-                             <input name="name" value="{{ $collection->collection }}"></input>
+                             <input name="name" value="{{ $quiz->quiz }}"></input>
                              <button class="btn btn-primary">Update Quiz Name</button>
                         </form>
 
-                        @foreach($collection->questions()->get() as $question)
+                        @foreach($quiz->questions()->get() as $question)
                                 <div>
                                     <div>{{$question->question}}</div>
-                                    <a href="/edit-quiz/{{$collection->id}}/question/{{$question->id}}"><button class="btn btn-primary">Edit Question</button></a>
-                                    <form method="POST" action="/delete-quiz/{{$collection->id}}/question/{{$question->id}}">
+                                    <a href="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}"><button class="btn btn-primary">Edit Question</button></a>
+                                    <form method="POST" action="/delete-quiz/{{$quiz->id}}/question/{{$question->id}}">
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
                                         <button class="btn btn-primary" type="submit">Delete</button>
                                     </form>
                                 </div>
                         @endforeach
-                        <a href="/create-question/{{$collection->id}}"><button class="btn btn-primary">Add Question</button></a>
+                        <a href="/create-question/{{$quiz->id}}"><button class="btn btn-primary">Add Question</button></a>
                     </div>
               
                 

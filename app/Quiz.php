@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Collection extends Model
+class Quiz extends Model
 {
-    protected $fillable = ['collection'];
+    protected $fillable = ['quiz'];
 
     public function questions () 
     {
