@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,17 +12,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
+Route::get('/home', 'QuestionController@index')->name('home');
 Route::get('/quizzes', 'QuestionController@index');
 Route::get('/quizzes/quiz/{quiz}', 'QuestionController@show');
 Route::get('/quizzes/quiz/{quiz}/questions', 'QuestionController@questions');

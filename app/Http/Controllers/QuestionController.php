@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Question;
 use App\Quiz;
@@ -19,7 +20,7 @@ class QuestionController extends Controller
         $quizzes = Quiz::latest()->get();
         $user = Auth::user();
         $scores = $user->scores()->get();
-        return view('quiz.index', compact('quizzes', 'scores'));
+        return view('home', compact('quizzes', 'scores'));
     }
 
     public function show(Quiz $quiz)

@@ -24,7 +24,7 @@ class QuizController extends Controller
     public function create()
     {     
         $quiz = auth()->user()->publish(
-            new Quiz(request(['quiz']))
+            new Quiz(request(['quiz', 'category']))
         );
 
         return redirect("/create-question/{$quiz->id}");
@@ -50,8 +50,7 @@ class QuizController extends Controller
         $question->addAnswers(request('wrong1'), 0);
         $question->addAnswers(request('wrong2'), 0);
         $question->addAnswers(request('wrong3'), 0);
-
-        return redirect("/create-question/{$quiz->id}");
+        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Added');
     }
 
     public function showEditQuestion(Quiz $quiz, Question $question)
@@ -68,7 +67,7 @@ class QuizController extends Controller
             $answer->answer = request("$answer->id");
             $answer->save();
         }
-        return redirect('home');
+        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Updated');
     }
 
     public function destroyQuestion(Quiz $quiz, Question $question)
@@ -79,7 +78,7 @@ class QuizController extends Controller
         }
         $question->delete();
 
-        return redirect('home');
+        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Deleted');
     }
 
     public function show(Quiz $quiz)
@@ -100,7 +99,7 @@ class QuizController extends Controller
         }
         $quiz->delete();
 
-        return redirect('home');
+        return redirect("/admin")->with('status', 'Quiz Deleted');
     }
 
 }

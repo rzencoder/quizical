@@ -10,7 +10,7 @@
                 <form method="POST" action="/create-question/{{$quiz->id}}">
                     {{ csrf_field()}}
                     @if(isset($message))
-                        {{$message}}
+                        <div class="text-success">{{$message}}</div>
                     @endif
                     <div class="form-group">
                         <label for="question">Question</label>

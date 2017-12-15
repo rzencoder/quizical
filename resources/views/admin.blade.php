@@ -15,6 +15,7 @@
 
                 <div>
                     <h2>Admin Quizzes</h2>
+                   
                     @if(isset($quizzes))
                         @foreach($quizzes as $quiz)
                         <div>
@@ -33,8 +34,8 @@
                     <form action="/create-quiz" method="POST">
                         {{ csrf_field() }}
                         <div class="form-control">
-
-                            <input type="text" name="collection" id="" placeholder="New Quiz Name">
+                            <input type="text" name="quiz" id="" placeholder="New Quiz Name">
+                            <input type="text" name="category" id="" placeholder="Category">
                             <button type="submit">Create</button>
                         </div>
                     </form>

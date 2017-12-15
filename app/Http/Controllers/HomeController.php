@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Collection;
+use App\Quiz;
 use App\User;
 
 class HomeController extends Controller
@@ -16,7 +16,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('guest');
     }
 
     /**
@@ -26,8 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $user = Auth::user();
-        // $quizzes = $user->collections()->get();
-        return view('home', compact('quizzes'));      
+        return view('welcome');      
     }
 }
