@@ -6,15 +6,21 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Admin Dashboard</div>
-
                 <div class="panel-body">
-                    @component('components.who')
-                        
+                    @component('components.who')                   
                     @endcomponent                
                 </div>
 
                 <div>
                     <h2>Admin Quizzes</h2>
+
+                    <div class="panel-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                    </div>
                    
                     @if(isset($quizzes))
                         @foreach($quizzes as $quiz)

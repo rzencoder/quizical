@@ -35,6 +35,12 @@ class QuestionController extends Controller
         return view('questions.show', compact('quiz'));
     }
 
+    public function showQuizzes()
+    {
+        $quizzes = Quiz::latest()->get();
+        return view('quiz.index', compact('quizzes'));
+    }
+
     public function questions(Quiz $quiz)
     {
         $questions = $quiz->questions;

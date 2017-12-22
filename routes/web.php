@@ -18,7 +18,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/home', 'QuestionController@index')->name('home');
-Route::get('/quizzes', 'QuestionController@index');
+Route::get('/quizzes', 'QuestionController@showQuizzes');
 Route::get('/quizzes/quiz/{quiz}', 'QuestionController@show');
 Route::get('/quizzes/quiz/{quiz}/questions', 'QuestionController@questions');
 Route::post('/quizzes/quiz/{quiz}/results', 'QuestionController@results');

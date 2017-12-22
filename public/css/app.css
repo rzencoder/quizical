@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);@import url(https://fonts.googleapis.com/css?family=Fredoka+One);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -1402,7 +1402,7 @@ html {
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
@@ -7499,7 +7499,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7633,7 +7633,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Raleway", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8348,5 +8348,60 @@ button.close {
   .hidden-print {
     display: none !important;
   }
+}
+
+body {
+  background: #042a2b;
+  color: #3a3e3b;
+  font-family: "Open Sans", sans-serif;
+}
+
+.navbar {
+  background: #e14807;
+}
+
+.navbar a {
+  color: #fefcfb;
+  font-size: 2.5rem;
+  font-family: "Fredoka One", cursive;
+}
+
+.panel {
+  background: #fefcfb;
+  border: none;
+  border-radius: 5px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+.btn-primary {
+  background: #3c7a89;
+}
+
+h1 {
+  font-family: "Fredoka One", cursive;
+  font-size: 8rem;
+  font-weight: 700;
+  color: #fefcfb;
+}
+
+h4 {
+  color: #e14807;
+  font-size: 3rem;
+  font-weight: 700;
+}
+
+.btn-1 {
+  background: #1282a2;
+  color: white;
+  font-weight: 700;
+  font-size: 3rem;
+}
+
+.btn-2 {
+  background: #e14807;
+  color: white;
+  font-weight: 700;
+  font-size: 3rem;
 }
 

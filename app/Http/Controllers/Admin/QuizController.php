@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Quiz;
 use App\Question;
 use App\Score;
+use function bar\baz\foo;
 
 class QuizController extends Controller
 {
@@ -84,7 +85,12 @@ class QuizController extends Controller
     public function show(Quiz $quiz)
     {
         $scores = $quiz->scores()->get();
-        return view('dashboard.scores', compact('scores'));
+        $users = [];
+        foreach ($scores as $score) {
+            $score->name = $score->user()->get()[0]->name;
+        }
+        $scores = $scores->sortByDesc('score');
+        return view('dashboard.scores', compact('scores', 'quiz'));
     }
 
     public function destroy(Quiz $quiz)

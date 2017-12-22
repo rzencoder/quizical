@@ -5,9 +5,13 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <h2>Scores</h2>
+                <h2>Category: {{ $quiz->category }}</h2>
+                <h2>Quiz: {{ $quiz->quiz }}</h2>
+                <h4>Scores</h4>
+                <a href="/admin"><button class="btn btn-primary">Back to Dashboard</button></a>
                 @foreach($scores as $score)
-                    <div>{{$score}}</div>
+                    <div>{{$score->name}}</div>
+                    <div>{{$score->score}}</div>
                 @endforeach
             </div>
         </div>

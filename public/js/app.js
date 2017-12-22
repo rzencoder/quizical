@@ -43513,7 +43513,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody {\n  background: orange;\n}\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  background: #fff;\n  border: 3px solid blue;\n  z-index: 3;\n  position: relative;\n}\n", ""]);
+exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  background: #fff;\n  border: 3px solid blue;\n  z-index: 3;\n  position: relative;\n}\n.history {\n  background: green;\n  width: 100%;\n}\n.music {\n  background: red;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Open Sans\", sans-serif;\n  text-align: center;\n  background: #ddd;\n}\n.quiz-title {\n  color: #fff;\n  font-family: \"Fredoka One\", cursive;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px;\n}\n.panel {\n  background: #fff;\n}\n.question-title {\n  color: #fff;\n  background: #666;\n  padding: 10px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #e14807;\n  color: white;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #f86223;\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 2s ease-out;\n  transition: opacity 2s ease-out;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.in {\n  -webkit-transform: translate(-200px);\n          transform: translate(-200px);\n}\n.out {\n  opacity: 0;\n}\n", ""]);
 
 // exports
 
@@ -43544,6 +43544,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -43553,12 +43564,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             score: 0,
             time: 0,
             message: '',
-            showModal: false
+            showModal: false,
+            category: ''
         };
     },
 
 
     methods: {
+        sgBeforeLeave: function sgBeforeLeave(el) {
+
+            el.style.opacity = 0;
+        },
         checkAnswer: function checkAnswer(event) {
             var _this = this;
 
@@ -43568,11 +43584,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     _this.score++;
                 }
             });
-            if (this.number + 1 >= this.quiz.questions.length) {
-                this.endQuiz();
-            } else {
-                this.number++;
-            }
+            setTimeout(function () {
+                if (_this.number + 1 >= _this.quiz.questions.length) {
+                    _this.endQuiz();
+                } else {
+                    _this.number++;
+                }
+            }, 2000);
 
             console.log(this.score);
         },
@@ -43592,6 +43610,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             overlay.classList.add('overlay');
             document.body.appendChild(overlay);
             this.showModal = true;
+        },
+        shuffle: function shuffle(a) {
+            for (var i = a.length - 1; i > 0; i--) {
+                var j = Math.floor(Math.random() * (i + 1));
+                var _ref = [a[j], a[i]];
+                a[i] = _ref[0];
+                a[j] = _ref[1];
+            }
+            return a;
         }
     },
 
@@ -43602,6 +43629,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         axios.get(window.location.pathname + '/questions').then(function (response) {
 
             _this3.quiz = response.data.quiz;
+            _this3.category = response.data.quiz.category.toLowerCase();
             console.log(_this3.quiz);
         });
     }
@@ -43615,52 +43643,79 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("div", { staticClass: "container" }, [
-      _c(
-        "div",
-        [
-          _c("div", { staticClass: "panel-heading" }, [
-            _vm._v(_vm._s(_vm.quiz.quiz))
-          ]),
-          _vm._v(" "),
-          _c("div", [_vm._v(_vm._s(_vm.quiz.questions[_vm.number].question))]),
-          _vm._v(" "),
-          _vm._l(_vm.quiz.questions[_vm.number].answers, function(answer) {
-            return _c(
-              "div",
-              { key: answer.id, on: { click: _vm.checkAnswer } },
-              [_vm._v(_vm._s(answer.answer))]
+  return _c(
+    "div",
+    [
+      _c("div", [
+        _c(
+          "div",
+          { staticClass: "question-container" },
+          [
+            _c("div", { staticClass: "quiz-title", class: [_vm.category] }, [
+              _vm._v(_vm._s(_vm.quiz.quiz))
+            ]),
+            _vm._v(" "),
+            _c(
+              "transition-group",
+              {
+                staticClass: "slide-group",
+                attrs: { tag: "div" },
+                on: { "before-leave": _vm.sgBeforeLeave }
+              },
+              [
+                _c("div", { key: _vm.number }, [
+                  _c("div", { staticClass: "question-title" }, [
+                    _vm._v(_vm._s(_vm.quiz.questions[_vm.number].question))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "answer-container" },
+                    _vm._l(
+                      _vm.shuffle(_vm.quiz.questions[_vm.number].answers),
+                      function(answer) {
+                        return _c(
+                          "div",
+                          {
+                            key: answer.id,
+                            staticClass: "answer",
+                            on: { click: _vm.checkAnswer }
+                          },
+                          [_vm._v(_vm._s(answer.answer))]
+                        )
+                      }
+                    )
+                  )
+                ])
+              ]
             )
-          })
-        ],
-        2
-      ),
-      _vm._v(" "),
-      _c("div", [_vm._v(_vm._s(_vm.message))])
-    ]),
-    _vm._v(" "),
-    _c("div", { class: { display: !_vm.showModal } }, [
-      _c("div", { staticClass: "modal-container" }, [
-        _c("h2", [_vm._v("You Scored: " + _vm._s(_vm.score))]),
+          ],
+          1
+        ),
         _vm._v(" "),
-        _vm._m(0, false, false)
+        _c("div", [_vm._v(_vm._s(_vm.message))])
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _vm.showModal
+          ? _c("div", [
+              _c("div", { staticClass: "modal-container" }, [
+                _c("h2", [_vm._v("You Scored: " + _vm._s(_vm.score))]),
+                _vm._v(" "),
+                _c("a", { attrs: { href: "/quizzes" } }, [
+                  _c("button", { staticClass: "btn btn-primary" }, [
+                    _vm._v("Back to Quizzes")
+                  ])
+                ])
+              ])
+            ])
+          : _vm._e()
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("a", { attrs: { href: "/quizzes" } }, [
-      _c("button", { staticClass: "btn btn-primary" }, [
-        _vm._v("Back to Quizzes")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {

@@ -6,6 +6,15 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <h2>Student Dashboard</h2>
+
+                <div class="panel-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+                </div>
+
                 <div class="panel-heading">Latest Quizzes</div>
                 @foreach($quizzes as $quiz)
                     @for($i = 0; $i < count($scores); $i++)
@@ -26,15 +35,6 @@
                     @endfor               
                 @endforeach
 
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
             </div>
 
         </div>

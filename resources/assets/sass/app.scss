@@ -1,9 +1,58 @@
-
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
-// Variables
+@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url("https://fonts.googleapis.com/css?family=Fredoka+One");
 @import "variables";
-
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+body {
+    background: #042a2b;
+    color: #3a3e3b;
+    font-family: $font-family-sans-serif;
+}
+
+.navbar {
+    background: #e14807;
+    a {
+        color: #fefcfb;
+        font-size: 2.5rem;
+        font-family: $font-family-cursive;
+    }
+}
+
+.panel {
+    background: #fefcfb;
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background: #3c7a89;
+}
+
+h1 {
+    font-family: $font-family-cursive;
+    font-size: 8rem;
+    font-weight: 700;
+    color: #fefcfb;
+}
+
+h4 {
+    color: #e14807;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.btn-1 {
+    background: #1282a2;
+    color: white;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.btn-2 {
+    background: #e14807;
+    color: white;
+    font-weight: 700;
+    font-size: 3rem;
+}

@@ -4,28 +4,16 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                
-                {{--  @foreach($collection->questions as $question)
-                    <div class="panel-body">              
-                        <div>{{ $question->question }}</div>
-                        @foreach($question->answers as $answer)
-                            <div>{{ $answer->answer }}</div>
-                        @endforeach
-                    </div>
-                @endforeach  --}}
-                <questions></questions>
 
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
-                    @endif
-
-                  
+                    @endif              
                 </div>
-            </div>
+                <questions></questions>
+            
         </div>
     </div>
 </div>
