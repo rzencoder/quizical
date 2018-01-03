@@ -17,10 +17,11 @@ class QuestionController extends Controller
 
     public function index()
     {
-        $quizzes = Quiz::latest()->get();
+        $quizzes = Quiz::latest()->get()->sortBy('category');
         $user = Auth::user();
         $scores = $user->scores()->get();
-        return view('home', compact('quizzes', 'scores'));
+        $subjects = ['english', 'computing', 'geography', 'history', 'maths', 'music', 'science', 'technology'];
+        return view('home', compact('quizzes', 'scores', 'subjects'));
     }
 
     public function show(Quiz $quiz)
