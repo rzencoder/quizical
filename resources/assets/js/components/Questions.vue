@@ -1,29 +1,28 @@
 <template>
 <div>
     <div>
-        <div class="question-container">
-            <div :class="[category]" class="quiz-title">{{quiz.quiz}}</div>
-            <transition-group tag="div" class="slide-group" 
-                    
-                    @before-leave="sgBeforeLeave">
+        <div class="time">Time Left: <span>{{ formattedTime }}</span></div>
+        <div v-if="quiz" class="question-container">
+            <div :class="[category]" class="quiz-title">{{ quiz.quiz }}</div>
+            <transition name="list" mode="out-in">
                 <div :key="number">
-            <div class="question-title">{{ quiz.questions[number].question }}</div>
-            <div class="answer-container">
-                <div class="answer" :key="answer.id" @click="checkAnswer" v-for="answer in shuffle(quiz.questions[number].answers)">{{ answer.answer }}</div>  
-            </div>  
-            </div>   
-            </transition-group>     
+                    <div class="question-title">{{ quiz.questions[number].question }}</div>
+                    <div class="answer-container">
+                        <div class="answer" :disabled="disabled" :key="answer.id" @click="checkAnswer" v-for="answer in quiz.questions[number].answers">{{ answer.answer }}</div>  
+                    </div>  
+                </div>   
+            </transition>     
         </div>
-        <div>{{ message }}</div>
-        
+        <div>{{ message }}</div>    
     </div>
+
     <transition name="fade">
-    <div v-if="showModal">
-        <div class="modal-container">
-            <h2 >You Scored: {{ score }}</h2>
-            <a href="/quizzes"><button class="btn btn-primary">Back to Quizzes</button></a>
+        <div v-if="showModal" class="modal-wrap">
+            <div class="modal-container">
+                <h2 >You Scored: {{ score }}</h2>
+                <a href="/quizzes"><button class="btn btn-primary">Back to Quizzes</button></a>
+            </div>
         </div>
-    </div>
     </transition>
 </div>
 </template>
@@ -37,43 +36,62 @@
                number: 0,
                score: 0,
                time: 0,
+               date: 0,
                message: '',
                showModal: false,
-               category: ''
+               category: '',
+               disabled: false
            }
         },
 
+        computed: {
+
+            formattedTime () {
+                return (this.date - this.time) % 60;
+            }
+
+        },
+
+
         methods: {
-            sgBeforeLeave(el){
-                
-                el.style.opacity = 0;
+
+            startTimer () {
+                this.date = Math.trunc((new Date()).getTime() / 1000) + 60;
+                this.interval = setInterval(() => {
+                    this.time = Math.trunc((new Date()).getTime() / 1000);
+                    if (this.time >= this.date) {
+                        this.endQuiz();
+                    }
+                },1000);
             },
+
             checkAnswer (event) {
-                console.log(event);
+                this.disabled = true;
                 this.quiz.questions[this.number].answers.forEach(answer => {
                     if(answer.answer === event.target.innerHTML && answer.correct){
                         this.score++;
+                        event.target.style.background = 'green';
+                    } else if (answer.answer === event.target.innerHTML && !answer.correct){
+                        event.target.style.background = 'red';
                     }
                 });
-                setTimeout(()=>{
+                setTimeout(() => {
+                    this.disabled = false;
                     if (this.number + 1 >= this.quiz.questions.length) {
-                    this.endQuiz();
-                } else {
-                     this.number++;
-                }
-                }, 2000);
-                
-               
-                console.log(this.score);
+                        this.endQuiz();
+                    } else {
+                        this.number++;
+                    }
+                }, 1000);
             },
 
             endQuiz () {
-
+                window.clearInterval(this.interval);
+                this.disabled = true;
                 axios.post(window.location.pathname + '/results', {
                     score: this.score, 
-                    time: this.time
+                    time: 60 - (this.date - this.time)
                 }).then(response => {
-                    console.log(response);
                     this.displayResult();
                 })
             },
@@ -94,14 +112,16 @@
             }
         },
 
-        mounted() {
-            console.log('Component mounted.')
-            axios.get(window.location.pathname + '/questions').then((response)=>{
-    
-                this.quiz = response.data.quiz;
+        mounted () {
+            axios.get(window.location.pathname + '/questions').then(response => {         
                 this.category = response.data.quiz.category.toLowerCase();
-                console.log(this.quiz);
-            })
+                let quiz = response.data.quiz;
+                quiz.questions.forEach(question => {
+                   this.shuffle(question.answers)
+                });
+                this.quiz = quiz;
+                this.startTimer();           
+            });
         }
 
     }
@@ -128,13 +148,22 @@
         display: none;
     }
 
+    .modal-wrap {
+        display: flex;
+        justify-content: center;
+        margin: -200px auto;
+    }
+
 .modal-container {
     width: 300px;
     height: 200px;
-    background: #fff;
-    border: 3px solid blue;
+    color: #fff;
+    background: #042a2b;
+    border: 5px solid #e14807;
+    border-radius: 5px;
     z-index: 3;
     position: relative;
+    text-align: center;
 }
 
 .history {
@@ -188,10 +217,14 @@
     &:hover {
         background: lighten(#e14807 , 10%);
     }
+    @media (max-width: 500px) {
+        width: 95%;
+    }
 }
 
 .fade-enter-active, .fade-leave-active {
-  transition: opacity 2s ease-out;
+  transition: opacity 1s ease-out;
+  opacity: 1;
 }
 
 .fade-enter, .fade-leave-to {
@@ -199,12 +232,18 @@
 }
 
 
-.in {
-    transform: translate(-200px);
+
+
+.list-enter-active, .list-leave-active {
+  transition: all 0.5s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+
 }
 
-.out {
-    opacity: 0;
+.time {
+    color: white;
 }
 
 </style>

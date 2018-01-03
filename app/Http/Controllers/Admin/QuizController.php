@@ -93,6 +93,30 @@ class QuizController extends Controller
         return view('dashboard.scores', compact('scores', 'quiz'));
     }
 
+    public function present(Quiz $quiz)
+    {
+        return view('dashboard.present');
+    }
+
+    public function presentData(Quiz $quiz)
+    {
+        $scores = $quiz->scores()->get();
+        
+        $users = [];
+        foreach ($scores as $score) {
+            $score->name = $score->user()->get()[0]->name;
+        }
+        
+        $scores = $scores->toArray();
+        usort($scores, function ($first, $second) {
+            return $first['time'] > $second['time'];
+        });
+        usort($scores, function ($first, $second) {
+            return $first['score'] < $second['score'];
+        });
+        return compact('scores', 'quiz');
+    }
+
     public function destroy(Quiz $quiz)
     {
         $questions = $quiz->questions()->get();

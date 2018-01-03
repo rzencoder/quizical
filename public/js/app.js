@@ -1375,7 +1375,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(13);
-module.exports = __webpack_require__(62);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
@@ -1403,6 +1403,7 @@ Vue.component('example-component', __webpack_require__(41));
 Vue.component('navigation', __webpack_require__(47));
 Vue.component('questions', __webpack_require__(52));
 Vue.component('modal', __webpack_require__(57));
+Vue.component('present', __webpack_require__(62));
 
 var app = new Vue({
   el: '#app'
@@ -43513,7 +43514,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  background: #fff;\n  border: 3px solid blue;\n  z-index: 3;\n  position: relative;\n}\n.history {\n  background: green;\n  width: 100%;\n}\n.music {\n  background: red;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Open Sans\", sans-serif;\n  text-align: center;\n  background: #ddd;\n}\n.quiz-title {\n  color: #fff;\n  font-family: \"Fredoka One\", cursive;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px;\n}\n.panel {\n  background: #fff;\n}\n.question-title {\n  color: #fff;\n  background: #666;\n  padding: 10px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #e14807;\n  color: white;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #f86223;\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 2s ease-out;\n  transition: opacity 2s ease-out;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.in {\n  -webkit-transform: translate(-200px);\n          transform: translate(-200px);\n}\n.out {\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-wrap {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin: -200px auto;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  color: #fff;\n  background: #042a2b;\n  border: 5px solid #e14807;\n  border-radius: 5px;\n  z-index: 3;\n  position: relative;\n  text-align: center;\n}\n.history {\n  background: green;\n  width: 100%;\n}\n.music {\n  background: red;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Open Sans\", sans-serif;\n  text-align: center;\n  background: #ddd;\n}\n.quiz-title {\n  color: #fff;\n  font-family: \"Fredoka One\", cursive;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px;\n}\n.panel {\n  background: #fff;\n}\n.question-title {\n  color: #fff;\n  background: #666;\n  padding: 10px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #e14807;\n  color: white;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #f86223;\n}\n@media (max-width: 500px) {\n.answer {\n      width: 95%;\n}\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 1s ease-out;\n  transition: opacity 1s ease-out;\n  opacity: 1;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.list-enter, .list-leave-to {\n  opacity: 0;\n}\n.time {\n  color: white;\n}\n", ""]);
 
 // exports
 
@@ -43553,7 +43554,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -43563,46 +43563,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             number: 0,
             score: 0,
             time: 0,
+            date: 0,
             message: '',
             showModal: false,
-            category: ''
+            category: '',
+            disabled: false
         };
     },
 
 
-    methods: {
-        sgBeforeLeave: function sgBeforeLeave(el) {
+    computed: {
+        formattedTime: function formattedTime() {
+            return (this.date - this.time) % 60;
+        }
+    },
 
-            el.style.opacity = 0;
-        },
-        checkAnswer: function checkAnswer(event) {
+    methods: {
+        startTimer: function startTimer() {
             var _this = this;
 
-            console.log(event);
+            this.date = Math.trunc(new Date().getTime() / 1000) + 60;
+            this.interval = setInterval(function () {
+                _this.time = Math.trunc(new Date().getTime() / 1000);
+                if (_this.time >= _this.date) {
+                    _this.endQuiz();
+                }
+            }, 1000);
+        },
+        checkAnswer: function checkAnswer(event) {
+            var _this2 = this;
+
+            this.disabled = true;
             this.quiz.questions[this.number].answers.forEach(function (answer) {
                 if (answer.answer === event.target.innerHTML && answer.correct) {
-                    _this.score++;
+                    _this2.score++;
+                    event.target.style.background = 'green';
+                } else if (answer.answer === event.target.innerHTML && !answer.correct) {
+                    event.target.style.background = 'red';
                 }
             });
             setTimeout(function () {
-                if (_this.number + 1 >= _this.quiz.questions.length) {
-                    _this.endQuiz();
+                _this2.disabled = false;
+                if (_this2.number + 1 >= _this2.quiz.questions.length) {
+                    _this2.endQuiz();
                 } else {
-                    _this.number++;
+                    _this2.number++;
                 }
-            }, 2000);
-
-            console.log(this.score);
+            }, 1000);
         },
         endQuiz: function endQuiz() {
-            var _this2 = this;
+            var _this3 = this;
 
+            window.clearInterval(this.interval);
+            this.disabled = true;
             axios.post(window.location.pathname + '/results', {
                 score: this.score,
-                time: this.time
+                time: 60 - (this.date - this.time)
             }).then(function (response) {
-                console.log(response);
-                _this2.displayResult();
+                _this3.displayResult();
             });
         },
         displayResult: function displayResult() {
@@ -43623,14 +43641,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
 
     mounted: function mounted() {
-        var _this3 = this;
+        var _this4 = this;
 
-        console.log('Component mounted.');
         axios.get(window.location.pathname + '/questions').then(function (response) {
-
-            _this3.quiz = response.data.quiz;
-            _this3.category = response.data.quiz.category.toLowerCase();
-            console.log(_this3.quiz);
+            _this4.category = response.data.quiz.category.toLowerCase();
+            var quiz = response.data.quiz;
+            quiz.questions.forEach(function (question) {
+                _this4.shuffle(question.answers);
+            });
+            _this4.quiz = quiz;
+            _this4.startTimer();
         });
     }
 });
@@ -43647,58 +43667,59 @@ var render = function() {
     "div",
     [
       _c("div", [
-        _c(
-          "div",
-          { staticClass: "question-container" },
-          [
-            _c("div", { staticClass: "quiz-title", class: [_vm.category] }, [
-              _vm._v(_vm._s(_vm.quiz.quiz))
-            ]),
-            _vm._v(" "),
-            _c(
-              "transition-group",
-              {
-                staticClass: "slide-group",
-                attrs: { tag: "div" },
-                on: { "before-leave": _vm.sgBeforeLeave }
-              },
+        _c("div", { staticClass: "time" }, [
+          _vm._v("Time Left: "),
+          _c("span", [_vm._v(_vm._s(_vm.formattedTime))])
+        ]),
+        _vm._v(" "),
+        _vm.quiz
+          ? _c(
+              "div",
+              { staticClass: "question-container" },
               [
-                _c("div", { key: _vm.number }, [
-                  _c("div", { staticClass: "question-title" }, [
-                    _vm._v(_vm._s(_vm.quiz.questions[_vm.number].question))
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "answer-container" },
-                    _vm._l(
-                      _vm.shuffle(_vm.quiz.questions[_vm.number].answers),
-                      function(answer) {
+                _c(
+                  "div",
+                  { staticClass: "quiz-title", class: [_vm.category] },
+                  [_vm._v(_vm._s(_vm.quiz.quiz))]
+                ),
+                _vm._v(" "),
+                _c("transition", { attrs: { name: "list", mode: "out-in" } }, [
+                  _c("div", { key: _vm.number }, [
+                    _c("div", { staticClass: "question-title" }, [
+                      _vm._v(_vm._s(_vm.quiz.questions[_vm.number].question))
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "answer-container" },
+                      _vm._l(_vm.quiz.questions[_vm.number].answers, function(
+                        answer
+                      ) {
                         return _c(
                           "div",
                           {
                             key: answer.id,
                             staticClass: "answer",
+                            attrs: { disabled: _vm.disabled },
                             on: { click: _vm.checkAnswer }
                           },
                           [_vm._v(_vm._s(answer.answer))]
                         )
-                      }
+                      })
                     )
-                  )
+                  ])
                 ])
-              ]
+              ],
+              1
             )
-          ],
-          1
-        ),
+          : _vm._e(),
         _vm._v(" "),
         _c("div", [_vm._v(_vm._s(_vm.message))])
       ]),
       _vm._v(" "),
       _c("transition", { attrs: { name: "fade" } }, [
         _vm.showModal
-          ? _c("div", [
+          ? _c("div", { staticClass: "modal-wrap" }, [
               _c("div", { staticClass: "modal-container" }, [
                 _c("h2", [_vm._v("You Scored: " + _vm._s(_vm.score))]),
                 _vm._v(" "),
@@ -43977,6 +43998,253 @@ if (false) {
 
 /***/ }),
 /* 62 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(63)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(65)
+/* template */
+var __vue_template__ = __webpack_require__(66)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\Present.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {  return key !== "default" && key.substr(0, 2) !== "__"})) {  console.error("named exports are not supported in *.vue files.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-61532bd8", Component.options)
+  } else {
+    hotAPI.reload("data-v-61532bd8", Component.options)
+' + '  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 63 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(64);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("73c5c0b2", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-61532bd8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Present.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-61532bd8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/sass-loader/lib/loader.js!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./Present.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 64 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\nbody {\n  color: black;\n}\n.list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.student {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n.student > div {\n    width: 25%;\n}\n.fly-enter-active, .fly-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.fly-enter, .fly-leave-to {\n  -webkit-transform: translate(-200px);\n          transform: translate(-200px);\n  opacity: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 65 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            quiz: '',
+            scores: [],
+            current: []
+        };
+    },
+
+
+    methods: {
+        animateResults: function animateResults() {
+            var _this = this;
+
+            this.scores.forEach(function (score, i) {
+                setTimeout(function () {
+                    _this.current.push(score);
+                }, i * 2000);
+            });
+        }
+    },
+
+    mounted: function mounted() {
+        var _this2 = this;
+
+        axios.get(window.location.pathname + '/data').then(function (response) {
+
+            _this2.quiz = response.data.quiz;
+            _this2.scores = response.data.scores.reverse();
+            console.log(_this2.quiz);
+            _this2.animateResults();
+        });
+    }
+});
+
+/***/ }),
+/* 66 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        { name: "show", rawName: "v-show", value: _vm.quiz, expression: "quiz" }
+      ]
+    },
+    [
+      _c("div", [
+        _c("div", [_vm._v(_vm._s(_vm.quiz.category))]),
+        _vm._v(" "),
+        _c("div", [_vm._v(_vm._s(_vm.quiz.quiz))]),
+        _vm._v(" "),
+        _c("div", [_vm._v("Top " + _vm._s(_vm.scores.length))])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "list" },
+        [
+          _vm._m(0, false, false),
+          _vm._v(" "),
+          _c(
+            "transition-group",
+            { staticClass: "list", attrs: { name: "fly" } },
+            _vm._l(_vm.current, function(student, i) {
+              return _c(
+                "div",
+                { key: student.id, style: { order: _vm.scores.length - i } },
+                [
+                  _c("div", { staticClass: "student" }, [
+                    _c("div", [_vm._v(_vm._s(_vm.scores.length - i))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(student.name))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(student.score))]),
+                    _vm._v(" "),
+                    _c("div", [_vm._v(_vm._s(student.time))])
+                  ])
+                ]
+              )
+            })
+          )
+        ],
+        1
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "student" }, [
+      _c("div", [_vm._v("Position")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("Name")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("Score")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("Time")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-61532bd8", module.exports)
+  }
+}
+
+/***/ }),
+/* 67 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

@@ -33,6 +33,8 @@ Route::post('/edit-quiz/{quiz}/question/{question}', 'QuizController@editQuestio
 Route::delete('/delete-quiz/{quiz}/question/{question}', 'QuizController@destroyQuestion');
 Route::delete('/delete-quiz/{quiz}', 'QuizController@destroy');
 Route::get('/show-results/{quiz}', 'QuizController@show');
+Route::get('/present-results/{quiz}', 'QuizController@present');
+Route::get('/present-results/{quiz}/data', 'QuizController@presentData');
 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

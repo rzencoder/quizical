@@ -26,7 +26,8 @@
                         @foreach($quizzes as $quiz)
                         <div>
                             <div>{{ $quiz->quiz }}</div>
-                            <a href="show-results/{{$quiz->id}}"><button class="btn btn-primary">See Latest Results</button></a>
+                            <a href="show-results/{{$quiz->id}}"><button class="btn btn-primary">See Results</button></a>
+                            <a href="present-results/{{$quiz->id}}"><button class="btn btn-primary">Present Latest Results</button></a>
                             <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
                             <form method="POST" action="/delete-quiz/{{$quiz->id}}">
                                 {{ csrf_field() }}

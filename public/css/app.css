@@ -8356,6 +8356,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+.row {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .navbar {
   background: #e14807;
 }

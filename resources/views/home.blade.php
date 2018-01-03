@@ -5,7 +5,8 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <h2>Student Dashboard</h2>
+                <h2>Dashboard</h2>
+                <h3>Welcome {{ Auth::user()->name }}</h3>
 
                 <div class="panel-body">
                     @if (session('status'))
