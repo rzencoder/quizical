@@ -20,7 +20,7 @@
         <div v-if="showModal" class="modal-wrap">
             <div class="modal-container">
                 <h2 >You Scored: {{ score }}</h2>
-                <a href="/quizzes"><button class="btn btn-primary">Back to Quizzes</button></a>
+                <a href="/home"><button class="btn btn-primary">Back to Dashboard</button></a>
             </div>
         </div>
     </transition>

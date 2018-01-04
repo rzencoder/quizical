@@ -43723,9 +43723,9 @@ var render = function() {
               _c("div", { staticClass: "modal-container" }, [
                 _c("h2", [_vm._v("You Scored: " + _vm._s(_vm.score))]),
                 _vm._v(" "),
-                _c("a", { attrs: { href: "/quizzes" } }, [
+                _c("a", { attrs: { href: "/home" } }, [
                   _c("button", { staticClass: "btn btn-primary" }, [
-                    _vm._v("Back to Quizzes")
+                    _vm._v("Back to Dashboard")
                   ])
                 ])
               ])

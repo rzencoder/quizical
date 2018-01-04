@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <h2>Dashboard</h2>
                 <h3>Welcome {{ Auth::user()->name }}</h3>
-
+                <a href="/home/update"><button>Update Account</button></a>
                 <div class="panel-body">
                     @if (session('status'))
                         <div class="alert alert-success">
@@ -44,7 +44,7 @@
                                             <?php break;?>
                                         @elseif($i === count($scores) - 1 && $quiz['category'] === $subject)
                                             <div class="panel-body">
-                                                <a href="quizzes/quiz/{{$quiz->id}}"> {{ $quiz->quiz }} </a>
+                                                <a href="quiz/{{$quiz->id}}"> {{ $quiz->quiz }} </a>
                                                 <div>{{ $quiz->category }}</div>
                                             </div>
                                         @endif

@@ -18,10 +18,9 @@ Route::get('/', 'HomeController@index');
 Route::get('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::get('/home', 'QuestionController@index')->name('home');
-Route::get('/quizzes', 'QuestionController@showQuizzes');
-Route::get('/quizzes/quiz/{quiz}', 'QuestionController@show');
-Route::get('/quizzes/quiz/{quiz}/questions', 'QuestionController@questions');
-Route::post('/quizzes/quiz/{quiz}/results', 'QuestionController@results');
+Route::get('/quiz/{quiz}', 'QuestionController@show');
+Route::get('/quiz/{quiz}/questions', 'QuestionController@questions');
+Route::post('/quiz/{quiz}/results', 'QuestionController@results');
 
 Route::get('/create-question/{quiz}', 'QuizController@newquestion');
 Route::post('/create-quiz', 'QuizController@create');
@@ -36,6 +35,12 @@ Route::get('/show-results/{quiz}', 'QuizController@show');
 Route::get('/present-results/{quiz}', 'QuizController@present');
 Route::get('/present-results/{quiz}/data', 'QuizController@presentData');
 
+Route::get('/changePassword', 'QuestionController@showChangePasswordForm');
+Route::post('/changePassword', 'QuestionController@changePassword')->name('changePassword');
+
+Route::get('/changeUserDetails', 'QuestionController@showChangeUserDetailsForm');
+Route::post('/changeUserDetails', 'QuestionController@changeUserDetails')->name('changeUserDetails');
+ 
 Route::prefix('admin')->group(function() {
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
@@ -45,6 +50,10 @@ Route::prefix('admin')->group(function() {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
+    Route::get('/changePassword', 'AdminController@showChangePasswordForm');
+    Route::post('/changePassword', 'AdminController@changePassword')->name('admin.changePassword');
+    Route::get('/changeUserDetails', 'AdminController@showChangeUserDetailsForm');
+    Route::post('/changeUserDetails', 'AdminController@changeUserDetails')->name('admin.changeUserDetails');
 });
 
     
