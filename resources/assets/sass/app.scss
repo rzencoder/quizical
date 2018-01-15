@@ -1,66 +1,232 @@
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Open+Sans");
-@import url("https://fonts.googleapis.com/css?family=Fredoka+One");
+@import url("https://fonts.googleapis.com/css?family=Raleway:900");
+@import url("https://fonts.googleapis.com/css?family=Roboto");
 @import "variables";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 body {
-    background: #042a2b;
-    color: #3a3e3b;
+    background: $body-bg;
+    color: $white;
     font-family: $font-family-sans-serif;
 }
 
 .row {
     justify-content: center;
+    margin-top: 80px;
+}
+
+.class-img {
+    background: linear-gradient(rgba(15, 41, 47, 0.85), rgba(15, 41, 47, 0.85)), url('../img/class.jpg');
+    background-size: cover;
+    height: 600px;
 }
 
 .navbar {
-    background: #e14807;
+    background: #501f3a;
     a {
-        color: #fefcfb;
+        color: $white;
         font-size: 2.5rem;
         font-family: $font-family-cursive;
     }
 }
 
 .panel {
-    background: #fefcfb;
+    background: $white;
     border: none;
     border-radius: 5px;
     box-shadow: none;
 }
 
 .btn-primary {
-    background: #3c7a89;
+    background: #14a098;
+}
+
+.btn-link {
+    color: #14a098;
 }
 
 h1 {
     font-family: $font-family-cursive;
-    font-size: 8rem;
-    font-weight: 700;
-    color: #fefcfb;
+    font-size: 10rem;
+    font-weight: 900;
+    color: $white;
+}
+
+.panel {
+    background: #cccccc;
+    color: #222;
+}
+
+.panel-default {
+    .panel-heading {
+        background: #501f3a;
+        color: $white;
+        font-family: $font-family-cursive;
+        font-size: 2rem;
+    }
 }
 
 h4 {
-    color: #e14807;
-    font-size: 3rem;
+    color: #14a098;
+    font-size: 4rem;
     font-weight: 700;
 }
 
 .btn-1 {
-    background: #1282a2;
-    color: white;
-    font-weight: 700;
+    background: #14a098;
+    color: $white;
     font-size: 3rem;
 }
 
 .btn-2 {
-    background: #e14807;
-    color: white;
-    font-weight: 700;
+    background: #cb2d6f;
+    color: $white;
     font-size: 3rem;
 }
 
+.one {
+    width: 100%;
+    height: 100%;
+}
+
+.two {
+    width: 100%;
+    height: 300px;
+    background: #4431ad;
+}
+
+.three {
+    width: 100%;
+    height: 300px;
+    background: #ce8dd3;
+}
+
+.cont {
+    width: 100%;
+    display: flex;
+}
+
+.as {
+    width: 40%;
+}
+
+.navbar {
+    margin: 0;
+}
+
+.accordion {
+    padding: 20px;
+}
+
+.card {
+    border: none;
+}
+
+.quiz-list-item {
+    background: $body-bg;
+    color: $white;
+    font-family: $font-family-sans-serif;
+    padding: 10px 20px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    a {
+        color: $white;
+    }
+}
+
+.category-header {
+    color: $white;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.category-icon {
+    width: 24px;
+}
+
+.computing {
+    background: #cf0505;
+}
+
 .english {
-    background: red;
+    background: #c95507;
+}
+
+.english {
+    background: #c95507;
+}
+
+.geography {
+    background: #d4c007;
+}
+
+.history {
+    background: #044e08;
+}
+
+.maths {
+    background: #038080;
+}
+
+.music {
+    background: #010179;
+}
+
+.science {
+    background: #440244;
+}
+
+.technology {
+    background: #da0758;
+}
+
+.btn-logout {
+    background: #cb2d6f;
+    color: $white;
+}
+
+.dashboard-container {
+    margin-left: 15px;
+}
+
+.accordion {
+    background: #cccccc;
+}
+
+.new-quiz-container {
+    padding: 10px 20px 10px 0;
+    display: flex;
+    justify-content: space-between;
+    >div>select {
+        font-size: 1.2rem;
+        padding: 5px;
+        font-family: $font-family-sans-serif;
+    }
+}
+
+.admin-quiz-list-btns {
+    display: flex;
+    button {
+        margin: 0 5px;
+    }
+}
+
+.admin-quiz-list {
+    background: $body-bg;
+    color: $white;
+    padding: 5px 5px 10px;
+    width: 95%;
+    margin: 10px 0;
+    border-radius: 5px;
+    > h2 {
+        font-family: $font-family-cursive;
+        margin: 0;
+        padding: 5px;
+        font-size: 2.5rem;
+    }
 }

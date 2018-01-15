@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
                 <h2>Category: {{ $quiz->category }}</h2>
                 <h2>Quiz: {{ $quiz->quiz }}</h2>

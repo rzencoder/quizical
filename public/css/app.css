@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);@import url(https://fonts.googleapis.com/css?family=Fredoka+One);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);@import url(https://fonts.googleapis.com/css?family=Raleway:900);@import url(https://fonts.googleapis.com/css?family=Roboto);@charset "UTF-8";
 
 /*!
  * Bootstrap v3.3.7 (http://getbootstrap.com)
@@ -1402,11 +1402,11 @@ html {
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 1.6;
   color: #636b6f;
-  background-color: #f5f8fa;
+  background-color: #0f292f;
 }
 
 input,
@@ -1455,7 +1455,7 @@ img {
 .img-thumbnail {
   padding: 4px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #0f292f;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -3054,7 +3054,7 @@ th {
 }
 
 .table .table {
-  background-color: #f5f8fa;
+  background-color: #0f292f;
 }
 
 .table-condensed > thead > tr > th,
@@ -5145,7 +5145,7 @@ tbody.collapse.in {
 .nav-tabs > li.active > a:hover,
 .nav-tabs > li.active > a:focus {
   color: #555555;
-  background-color: #f5f8fa;
+  background-color: #0f292f;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -5246,7 +5246,7 @@ tbody.collapse.in {
   .nav-tabs.nav-justified > .active > a:hover,
   .nav-tabs-justified > .active > a:focus,
   .nav-tabs.nav-justified > .active > a:focus {
-    border-bottom-color: #f5f8fa;
+    border-bottom-color: #0f292f;
   }
 }
 
@@ -5689,7 +5689,7 @@ tbody.collapse.in {
 
 .navbar-default {
   background-color: #fff;
-  border-color: #d3e0e9;
+  border-color: #030708;
 }
 
 .navbar-default .navbar-brand {
@@ -5745,7 +5745,7 @@ tbody.collapse.in {
 
 .navbar-default .navbar-collapse,
 .navbar-default .navbar-form {
-  border-color: #d3e0e9;
+  border-color: #030708;
 }
 
 .navbar-default .navbar-nav > .open > a,
@@ -6314,7 +6314,7 @@ a.badge:focus {
   padding: 4px;
   margin-bottom: 22px;
   line-height: 1.6;
-  background-color: #f5f8fa;
+  background-color: #0f292f;
   border: 1px solid #ddd;
   border-radius: 4px;
   -webkit-transition: border 0.2s ease-in-out;
@@ -6596,7 +6596,7 @@ a.thumbnail.active {
   padding: 10px 15px;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #d3e0e9;
+  border: 1px solid #030708;
 }
 
 .list-group-item:first-child {
@@ -6879,7 +6879,7 @@ button.list-group-item-danger.active:focus {
 .panel-footer {
   padding: 10px 15px;
   background-color: #f5f5f5;
-  border-top: 1px solid #d3e0e9;
+  border-top: 1px solid #030708;
   border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px;
 }
@@ -7100,7 +7100,7 @@ button.list-group-item-danger.active:focus {
 
 .panel-group .panel-heading + .panel-collapse > .panel-body,
 .panel-group .panel-heading + .panel-collapse > .list-group {
-  border-top: 1px solid #d3e0e9;
+  border-top: 1px solid #030708;
 }
 
 .panel-group .panel-footer {
@@ -7108,21 +7108,21 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-group .panel-footer + .panel-collapse .panel-body {
-  border-bottom: 1px solid #d3e0e9;
+  border-bottom: 1px solid #030708;
 }
 
 .panel-default {
-  border-color: #d3e0e9;
+  border-color: #030708;
 }
 
 .panel-default > .panel-heading {
   color: #333333;
   background-color: #fff;
-  border-color: #d3e0e9;
+  border-color: #030708;
 }
 
 .panel-default > .panel-heading + .panel-collapse > .panel-body {
-  border-top-color: #d3e0e9;
+  border-top-color: #030708;
 }
 
 .panel-default > .panel-heading .badge {
@@ -7131,7 +7131,7 @@ button.list-group-item-danger.active:focus {
 }
 
 .panel-default > .panel-footer + .panel-collapse > .panel-body {
-  border-bottom-color: #d3e0e9;
+  border-bottom-color: #030708;
 }
 
 .panel-primary {
@@ -7499,7 +7499,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -7633,7 +7633,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -8351,25 +8351,33 @@ button.close {
 }
 
 body {
-  background: #042a2b;
-  color: #3a3e3b;
-  font-family: "Open Sans", sans-serif;
+  background: #0f292f;
+  color: #fefcfb;
+  font-family: "Roboto", sans-serif;
 }
 
 .row {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-top: 80px;
+}
+
+.class-img {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(15, 41, 47, 0.85)), to(rgba(15, 41, 47, 0.85))), url(/images/class.jpg?600351874517db5c223c39f17dfe829e);
+  background: linear-gradient(rgba(15, 41, 47, 0.85), rgba(15, 41, 47, 0.85)), url(/images/class.jpg?600351874517db5c223c39f17dfe829e);
+  background-size: cover;
+  height: 600px;
 }
 
 .navbar {
-  background: #e14807;
+  background: #501f3a;
 }
 
 .navbar a {
   color: #fefcfb;
   font-size: 2.5rem;
-  font-family: "Fredoka One", cursive;
+  font-family: "Raleway", cursive;
 }
 
 .panel {
@@ -8381,37 +8389,209 @@ body {
 }
 
 .btn-primary {
-  background: #3c7a89;
+  background: #14a098;
+}
+
+.btn-link {
+  color: #14a098;
 }
 
 h1 {
-  font-family: "Fredoka One", cursive;
-  font-size: 8rem;
-  font-weight: 700;
+  font-family: "Raleway", cursive;
+  font-size: 10rem;
+  font-weight: 900;
   color: #fefcfb;
 }
 
+.panel {
+  background: #cccccc;
+  color: #222;
+}
+
+.panel-default .panel-heading {
+  background: #501f3a;
+  color: #fefcfb;
+  font-family: "Raleway", cursive;
+  font-size: 2rem;
+}
+
 h4 {
-  color: #e14807;
-  font-size: 3rem;
+  color: #14a098;
+  font-size: 4rem;
   font-weight: 700;
 }
 
 .btn-1 {
-  background: #1282a2;
-  color: white;
-  font-weight: 700;
+  background: #14a098;
+  color: #fefcfb;
   font-size: 3rem;
 }
 
 .btn-2 {
-  background: #e14807;
-  color: white;
-  font-weight: 700;
+  background: #cb2d6f;
+  color: #fefcfb;
   font-size: 3rem;
 }
 
+.one {
+  width: 100%;
+  height: 100%;
+}
+
+.two {
+  width: 100%;
+  height: 300px;
+  background: #4431ad;
+}
+
+.three {
+  width: 100%;
+  height: 300px;
+  background: #ce8dd3;
+}
+
+.cont {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.as {
+  width: 40%;
+}
+
+.navbar {
+  margin: 0;
+}
+
+.accordion {
+  padding: 20px;
+}
+
+.card {
+  border: none;
+}
+
+.quiz-list-item {
+  background: #0f292f;
+  color: #fefcfb;
+  font-family: "Roboto", sans-serif;
+  padding: 10px 20px;
+  font-size: 1.8rem;
+  border-bottom: 1px solid #ccc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.quiz-list-item a {
+  color: #fefcfb;
+}
+
+.category-header {
+  color: #fefcfb;
+  text-transform: capitalize;
+  font-weight: 700;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.category-icon {
+  width: 24px;
+}
+
+.computing {
+  background: #cf0505;
+}
+
 .english {
-  background: red;
+  background: #c95507;
+}
+
+.english {
+  background: #c95507;
+}
+
+.geography {
+  background: #d4c007;
+}
+
+.history {
+  background: #044e08;
+}
+
+.maths {
+  background: #038080;
+}
+
+.music {
+  background: #010179;
+}
+
+.science {
+  background: #440244;
+}
+
+.technology {
+  background: #da0758;
+}
+
+.btn-logout {
+  background: #cb2d6f;
+  color: #fefcfb;
+}
+
+.dashboard-container {
+  margin-left: 15px;
+}
+
+.accordion {
+  background: #cccccc;
+}
+
+.new-quiz-container {
+  padding: 10px 20px 10px 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.new-quiz-container > div > select {
+  font-size: 1.2rem;
+  padding: 5px;
+  font-family: "Roboto", sans-serif;
+}
+
+.admin-quiz-list-btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.admin-quiz-list-btns button {
+  margin: 0 5px;
+}
+
+.admin-quiz-list {
+  background: #0f292f;
+  color: #fefcfb;
+  padding: 5px 5px 10px;
+  width: 95%;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+.admin-quiz-list > h2 {
+  font-family: "Raleway", cursive;
+  margin: 0;
+  padding: 5px;
+  font-size: 2.5rem;
 }
 

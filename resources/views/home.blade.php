@@ -3,54 +3,64 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-8">
             <div class="panel panel-default">
-                <h2>Dashboard</h2>
-                <h3>Welcome {{ Auth::user()->name }}</h3>
-                <a href="/home/update"><button>Update Account</button></a>
-                <div class="panel-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                <div class="panel-heading">
+                    <div>Dashboard</div>
                 </div>
+                <div class="dashboard-container">
+                    <h3>Welcome {{ Auth::user()->name }}</h3>
+                    <a href="/home/update"><button class="btn btn-primary">Update Account</button></a>
+                    <a href=""><button class="btn btn-logout">Logout</button></a>
+                    <div class="panel-body">
+                        @if (session('status'))
+                            <div class="alert alert-success">
+                                {{ session('status') }}
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
 
+            <div class="panel panel-default">
                 <div class="panel-heading">Latest Quizzes</div>
 
-                <div id="accordion" role="tablist">
+                <div id="accordion" role="tablist" class="accordion">
                     
                     @foreach ($subjects as $subject)
                     <div class="card">
-                        <div class="card-header collapsed {{$subject}}" role="tab" id="headingOne"
-                             data-toggle="collapse" href="#{{ $subject }}" aria-expanded="false" aria-controls="{{ $subject }}">
-                            <h5 class="mb-0">
-                                {{ $subject }}
-                            </h5>
+                        <div class="card-header category-header collapsed {{$subject[0]}}" role="tab" id="headingOne"
+                             data-toggle="collapse" href="#{{ $subject[0] }}" aria-expanded="false" aria-controls="{{ $subject[0] }}">
+                            <span>
+                                <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
+                            </span>
+                            
+
+                            <span>
+                                {{ $subject[0] }}
+                            </span>
                         </div>
 
-                        <div id="{{ $subject }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
+                        <div id="{{ $subject[0] }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                            
                                @foreach($quizzes as $quiz)
                                     @for($i = 0; $i < count($scores); $i++)
-                                        @if($scores[$i]->quiz_id === $quiz['id'] && $quiz['category'] === $subject)
-                                            <div class="panel-body">
-                                                <div> {{ $quiz['quiz'] }} 
-                                                    <span>{{ $quiz['category'] }}</span>
-                                                    <span>Score: {{ $scores[$i]->score }}</span>
-                                                    <span>Time: {{ $scores[$i]->time }}</span>
-                                                </div>                     
+                                        @if($scores[$i]->quiz_id === $quiz['id'] && $quiz['category'] === $subject[0])
+                                            <div class="quiz-list-item">
+                                                <div>{{ $quiz['quiz'] }}</div>                                               
+                                                <div>Score: {{ $scores[$i]->score }}</div>
+                                                <div>Time: {{ $scores[$i]->time }}s</div>                                                          
                                             </div>
                                             <?php break;?>
-                                        @elseif($i === count($scores) - 1 && $quiz['category'] === $subject)
-                                            <div class="panel-body">
-                                                <a href="quiz/{{$quiz->id}}"> {{ $quiz->quiz }} </a>
-                                                <div>{{ $quiz->category }}</div>
+                                        @elseif($i === count($scores) - 1 && $quiz['category'] === $subject[0])
+                                            <div class="quiz-list-item">
+                                                <span> {{ $quiz->quiz }} </span>
+                                                 <a href="quiz/{{$quiz->id}}"><button class="btn btn-primary">Start</button></a>
                                             </div>
                                         @endif
                                     @endfor               
                                 @endforeach
-                            </div>
+                            
                         </div>
                     </div>
                     @endforeach

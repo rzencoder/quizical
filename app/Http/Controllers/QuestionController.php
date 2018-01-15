@@ -21,7 +21,7 @@ class QuestionController extends Controller
         $quizzes = Quiz::latest()->get()->sortBy('category');
         $user = Auth::user();
         $scores = $user->scores()->get();
-        $subjects = ['english', 'computing', 'geography', 'history', 'maths', 'music', 'science', 'technology'];
+        $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
         return view('home', compact('quizzes', 'scores', 'subjects'));
     }
 

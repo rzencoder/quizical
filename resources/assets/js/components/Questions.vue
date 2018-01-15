@@ -166,14 +166,7 @@
     text-align: center;
 }
 
-.history {
-    background: green;
-    width: 100%;
-}
 
-.music {
-    background: red;
-}
 
 .question-container {
     font-size: 2.5rem;
