@@ -1,0 +1,26 @@
+.welcome-container {
+    width: 100%;
+    display: flex;
+}
+
+.one {
+    width: 70%;
+    height: 100%;
+    margin: 100px auto;
+    h4 {
+        margin-top: -10px;
+        font-size: 4rem;
+    }
+    >div {
+        display: flex;
+        button {
+            margin: 10px;
+        }
+    }
+}
+
+.class-img {
+    background: linear-gradient(rgba(15, 41, 47, 0.85), rgba(15, 41, 47, 0.85)), url('../img/class.jpg');
+    background-size: cover;
+    height: 600px;
+}

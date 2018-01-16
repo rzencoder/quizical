@@ -1,0 +1,25 @@
+@import '../helpers/variables';
+.btn-1 {
+    background: $light-blue;
+    color: $white;
+    font-size: 3rem;
+}
+
+.btn-2 {
+    background: $pink;
+    color: $white;
+    font-size: 3rem;
+}
+
+.btn-primary {
+    background: $light-blue;
+}
+
+.btn-logout {
+    background: $pink;
+    color: $white;
+}
+
+.btn-link {
+    background: $light-blue;
+}

@@ -1,0 +1,40 @@
+@import '../helpers/variables';
+
+table.scoresTable {
+    border: 1px solid $dark-purple;
+    background-color: #D87CA9;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+table.scoresTable td,
+table.scoresTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.scoresTable tbody td {
+    font-size: 13px;
+}
+
+table.scoresTable tr:nth-child(even) {
+    background: #FFFFFF;
+}
+
+table.scoresTable thead {
+    background: #501F3A;
+    border-bottom: 2px solid #444444;
+}
+
+table.scoresTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+
+table.scoresTable thead th:first-child {
+    border-left: none;
+}

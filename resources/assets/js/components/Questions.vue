@@ -129,11 +129,7 @@
 
 <style lang="scss">
 
-@import '../../sass/variables';
-
-    body {
-  
-    }
+@import '../../sass/helpers/variables';
 
     .overlay {
         position: absolute;
@@ -157,28 +153,26 @@
 .modal-container {
     width: 300px;
     height: 200px;
-    color: #fff;
-    background: #042a2b;
-    border: 5px solid #e14807;
+    color: $white;
+    background: $dark-blue;
+    border: 5px solid $pink;
     border-radius: 5px;
     z-index: 3;
     position: relative;
     text-align: center;
 }
 
-
-
 .question-container {
     font-size: 2.5rem;
-    font-family: $font-family-sans-serif;
+    font-family: $font-family-base;
     text-align: center;
-    background: #ddd;
+    background: $light-grey;
     border-radius: 10px;
 }
 
 .quiz-title {
-    color: #fff;
-    font-family: $font-family-cursive;
+    color: $white;
+    font-family: $font-family-title;
     text-transform: uppercase;
     padding: 5px;
     border-radius: 5px 5px 0 0;
@@ -186,11 +180,11 @@
 }
 
 .panel {
-     background: #fff;
+     background: $white;
 }
 
 .question-title {
-    color: #fff;
+    color: $white;
     background: #444;
     padding: 5px 0;
 }
@@ -203,13 +197,13 @@
 
 .answer {
     width: 40%;
-    background: #cb2d6f;
-    color: white;
+    background: $pink;
+    color: $white;
     border-radius: 10px;
     margin: 10px 0;
     cursor: pointer;
     &:hover {
-        background: lighten(#e14807 , 10%);
+        background: lighten($pink , 10%);
     }
     @media (max-width: 500px) {
         width: 95%;
@@ -225,9 +219,6 @@
   opacity: 0;
 }
 
-
-
-
 .list-enter-active, .list-leave-active {
   transition: all 0.5s;
 }
@@ -237,7 +228,7 @@
 }
 
 .time {
-    color: white;
+    color: $white;
 }
 
 </style>

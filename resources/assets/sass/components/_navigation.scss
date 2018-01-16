@@ -1,0 +1,11 @@
+@import '../helpers/variables';
+
+.navbar {
+    margin: 0;
+    background: $dark-purple;
+    a {
+        color: $white;
+        font-size: 2.5rem;
+        font-family: $font-family-title;
+    }
+}

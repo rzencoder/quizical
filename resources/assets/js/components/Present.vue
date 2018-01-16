@@ -80,10 +80,10 @@
 
 <style lang="scss">
 
-@import '../../sass/variables';
+@import '../../sass/helpers/variables';
 
 body {
-    color: black;
+    color: $font-black;
 }
 
 .list {
@@ -95,13 +95,13 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    background: #cb2d6f;
+    background: $pink;
     color: $white;
     padding: 5px;
     margin: 5px 0;
     border-radius: 10px;
-    text-shadow: 2px 2px #222;
-    font-family: $font-family-cursive;
+    text-shadow: 2px 2px $font-black;
+    font-family: $font-family-title;
     font-size: 2rem;
     text-align: center;
     > div {
@@ -114,13 +114,13 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    background: #14a098;
+    background: $light-blue;
     color: $white;
     padding: 5px;
     margin-bottom: 5px;
     text-align: center;
-    text-shadow: 2px 2px #222;
-    font-family: $font-family-cursive;
+    text-shadow: 2px 2px $font-black;
+    font-family: $font-family-title;
     font-size: 1.8rem;
     > div {
         width: 25%;
@@ -152,7 +152,7 @@ body {
 }
 
 .panel {
-    background: $body-bg;
+    background: $dark-blue;
 }
 
 </style>

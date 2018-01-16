@@ -1,0 +1,18 @@
+@import '../helpers/variables';
+
+h1 {
+    font-family: $font-family-title;
+    font-size: 10rem;
+    font-weight: 900;
+    color: $white;
+}
+
+h3 {
+    font-family: $font-family-title;
+}
+
+h4 {
+    color: $pink;
+    font-size: 4rem;
+    font-weight: 700;
+}

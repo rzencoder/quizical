@@ -1,0 +1,28 @@
+@import '../helpers/variables';
+.card {
+    border: none;
+}
+
+.panel {
+    border: none;
+    border-radius: 5px;
+    box-shadow: none;
+    background: $light-grey;
+    color: $font-black;
+}
+
+.panel-default {
+    .panel-heading {
+        background: $dark-purple;
+        color: $white;
+        font-family: $font-family-title;
+        font-size: 2rem;
+    }
+}
+
+.panel-subheading {
+    color: $white;
+    font-family: $font-family-title;
+    font-size: 1.8rem;
+    padding: 5px 5px 5px 20px;
+}

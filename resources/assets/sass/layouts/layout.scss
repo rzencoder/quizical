@@ -1,0 +1,12 @@
+@import '../helpers/variables';
+
+body {
+    background: $dark-blue;
+    color: $white;
+    font-family: $font-family-base;
+}
+
+.row {
+    justify-content: center;
+    margin-top: 80px;
+}
