@@ -11,6 +11,8 @@ use function bar\baz\foo;
 
 class QuizController extends Controller
 {
+    public $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
+
     public function __construct()
     {
         $this->middleware('auth:admin');
@@ -18,7 +20,6 @@ class QuizController extends Controller
 
     public function newQuestion(Quiz $quiz)
     {       
-        $quiz = Quiz::latest()->get()->first();
         return view('dashboard.new', compact('quiz'));
     }
 
@@ -32,16 +33,19 @@ class QuizController extends Controller
     }
 
     public function edit(Quiz $quiz)
-    {
-        return view('quiz.edit', compact('quiz'));
+    {   
+        $subjects = $this->subjects;
+        return view('quiz.edit', compact('quiz', 'subjects'));
     }
 
     public function changeQuizName(quiz $quiz)
     {
         $quiz->quiz = request('name');
+        $quiz->category = request('category');
         $quiz->save();
         $message = 'Quiz Name Updated';
-        return view('quiz.edit', compact('message', 'quiz'));
+        $subjects = $this->subjects;
+        return view('quiz.edit', compact('message', 'quiz', 'subjects'));
     }
 
     public function store(Quiz $quiz)

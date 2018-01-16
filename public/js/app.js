@@ -43514,7 +43514,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-wrap {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin: -200px auto;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  color: #fff;\n  background: #042a2b;\n  border: 5px solid #e14807;\n  border-radius: 5px;\n  z-index: 3;\n  position: relative;\n  text-align: center;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Roboto\", sans-serif;\n  text-align: center;\n  background: #ddd;\n}\n.quiz-title {\n  color: #fff;\n  font-family: \"Raleway\", cursive;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px;\n}\n.panel {\n  background: #fff;\n}\n.question-title {\n  color: #fff;\n  background: #666;\n  padding: 10px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #e14807;\n  color: white;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #f86223;\n}\n@media (max-width: 500px) {\n.answer {\n      width: 95%;\n}\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 1s ease-out;\n  transition: opacity 1s ease-out;\n  opacity: 1;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.list-enter, .list-leave-to {\n  opacity: 0;\n}\n.time {\n  color: white;\n}\n", ""]);
+exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-wrap {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin: -200px auto;\n}\n.modal-container {\n  width: 300px;\n  height: 200px;\n  color: #fff;\n  background: #042a2b;\n  border: 5px solid #e14807;\n  border-radius: 5px;\n  z-index: 3;\n  position: relative;\n  text-align: center;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Roboto\", sans-serif;\n  text-align: center;\n  background: #ddd;\n  border-radius: 10px;\n}\n.quiz-title {\n  color: #fff;\n  font-family: \"Raleway\", cursive;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px 5px 0 0;\n}\n.panel {\n  background: #fff;\n}\n.question-title {\n  color: #fff;\n  background: #444;\n  padding: 5px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #cb2d6f;\n  color: white;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #f86223;\n}\n@media (max-width: 500px) {\n.answer {\n      width: 95%;\n}\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 1s ease-out;\n  transition: opacity 1s ease-out;\n  opacity: 1;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.list-enter, .list-leave-to {\n  opacity: 0;\n}\n.time {\n  color: white;\n}\n", ""]);
 
 // exports
 
@@ -44083,7 +44083,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\nbody {\n  color: black;\n}\n.list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.student {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n}\n.student > div {\n    width: 25%;\n}\n.fly-enter-active, .fly-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.fly-enter, .fly-leave-to {\n  -webkit-transform: translate(-200px);\n          transform: translate(-200px);\n  opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\nbody {\n  color: black;\n}\n.list {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient: vertical;\n  -webkit-box-direction: normal;\n      -ms-flex-direction: column;\n          flex-direction: column;\n}\n.student {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  background: #cb2d6f;\n  color: #fefcfb;\n  padding: 5px;\n  margin: 5px 0;\n  border-radius: 10px;\n  text-shadow: 2px 2px #222;\n  font-family: \"Raleway\", cursive;\n  font-size: 2rem;\n  text-align: center;\n}\n.student > div {\n    width: 25%;\n    text-align: center;\n}\n.table-header {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  width: 100%;\n  -webkit-box-pack: justify;\n      -ms-flex-pack: justify;\n          justify-content: space-between;\n  background: #14a098;\n  color: #fefcfb;\n  padding: 5px;\n  margin-bottom: 5px;\n  text-align: center;\n  text-shadow: 2px 2px #222;\n  font-family: \"Raleway\", cursive;\n  font-size: 1.8rem;\n}\n.table-header > div {\n    width: 25%;\n    text-align: center;\n}\n.fly-enter-active, .fly-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.fly-enter, .fly-leave-to {\n  -webkit-transform: translate(-200px);\n          transform: translate(-200px);\n  opacity: 0;\n}\n.gold {\n  background: gold;\n  font-size: 4rem;\n}\n.silver {\n  background: silver;\n  font-size: 3.5rem;\n}\n.bronze {\n  background: brown;\n  font-size: 3rem;\n}\n.panel {\n  background: #0f292f;\n}\n", ""]);
 
 // exports
 
@@ -44094,7 +44094,6 @@ exports.push([module.i, "\nbody {\n  color: black;\n}\n.list {\n  display: -webk
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
 //
 //
 //
@@ -44137,6 +44136,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
     methods: {
+        medal: function medal(i) {
+            switch (this.scores.length - i) {
+                case 1:
+                    return 'gold';
+                    break;
+                case 2:
+                    return 'silver';
+                    break;
+                case 3:
+                    return 'bronze';
+                    break;
+                default:
+                    break;
+            }
+        },
         animateResults: function animateResults() {
             var _this = this;
 
@@ -44174,15 +44188,18 @@ var render = function() {
     {
       directives: [
         { name: "show", rawName: "v-show", value: _vm.quiz, expression: "quiz" }
-      ]
+      ],
+      staticClass: "panel panel-default"
     },
     [
       _c("div", [
-        _c("div", [_vm._v(_vm._s(_vm.quiz.category))]),
+        _c("div", { staticClass: "panel-heading" }, [
+          _vm._v("Results - Top " + _vm._s(_vm.scores.length))
+        ]),
         _vm._v(" "),
-        _c("div", [_vm._v(_vm._s(_vm.quiz.quiz))]),
-        _vm._v(" "),
-        _c("div", [_vm._v("Top " + _vm._s(_vm.scores.length))])
+        _c("div", { class: ["panel-subheading", _vm.quiz.category] }, [
+          _vm._v(_vm._s(_vm.quiz.quiz))
+        ])
       ]),
       _vm._v(" "),
       _c(
@@ -44199,14 +44216,14 @@ var render = function() {
                 "div",
                 { key: student.id, style: { order: _vm.scores.length - i } },
                 [
-                  _c("div", { staticClass: "student" }, [
+                  _c("div", { class: ["student", _vm.medal(i)] }, [
                     _c("div", [_vm._v(_vm._s(_vm.scores.length - i))]),
                     _vm._v(" "),
                     _c("div", [_vm._v(_vm._s(student.name))]),
                     _vm._v(" "),
                     _c("div", [_vm._v(_vm._s(student.score))]),
                     _vm._v(" "),
-                    _c("div", [_vm._v(_vm._s(student.time))])
+                    _c("div", [_vm._v(_vm._s(student.time) + "s")])
                   ])
                 ]
               )
@@ -44223,7 +44240,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "student" }, [
+    return _c("div", { staticClass: "table-header" }, [
       _c("div", [_vm._v("Position")]),
       _vm._v(" "),
       _c("div", [_vm._v("Name")]),

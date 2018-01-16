@@ -223,10 +223,100 @@ h4 {
     width: 95%;
     margin: 10px 0;
     border-radius: 5px;
-    > h2 {
+    >h2 {
         font-family: $font-family-cursive;
         margin: 0;
         padding: 5px;
         font-size: 2.5rem;
     }
 }
+
+.new-question-container {
+    padding: 10px 20px;
+    label {
+        font-weight: 700;
+        font-size: 1.7rem;
+    }
+}
+
+h3 {
+    font-family: $font-family-cursive;
+}
+
+.edit-quiz-container {
+    select {
+        font-size: 1.2rem;
+        padding: 5px;
+        font-family: $font-family-sans-serif;
+    }
+    >div {
+        padding-bottom: 10px;
+        border-bottom: 2px solid $body-bg;
+    }
+}
+
+.panel-subheading {
+    color: $white;
+    font-family: $font-family-cursive;
+    font-size: 1.8rem;
+    padding: 5px 5px 5px 20px;
+}
+
+.edit-questions-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    >div {
+        display: flex;
+        font-size: 2rem;
+        font-weight: 700;
+        padding: 5px;
+        button {
+            margin: 0 5px;
+        }
+    }
+}
+
+.scores-container {
+    padding: 10px;
+}
+
+table.scoresTable {
+    border: 1px solid #501F3A;
+    background-color: #D87CA9;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+table.scoresTable td,
+table.scoresTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+}
+
+table.scoresTable tbody td {
+    font-size: 13px;
+}
+
+table.scoresTable tr:nth-child(even) {
+    background: #FFFFFF;
+}
+
+table.scoresTable thead {
+    background: #501F3A;
+    border-bottom: 2px solid #444444;
+}
+
+table.scoresTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+}
+
+table.scoresTable thead th:first-child {
+    border-left: none;
+}
+

@@ -173,6 +173,7 @@
     font-family: $font-family-sans-serif;
     text-align: center;
     background: #ddd;
+    border-radius: 10px;
 }
 
 .quiz-title {
@@ -180,7 +181,7 @@
     font-family: $font-family-cursive;
     text-transform: uppercase;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
 
 }
 
@@ -190,8 +191,8 @@
 
 .question-title {
     color: #fff;
-    background: #666;
-    padding: 10px 0;
+    background: #444;
+    padding: 5px 0;
 }
 
 .answer-container {
@@ -202,7 +203,7 @@
 
 .answer {
     width: 40%;
-    background: #e14807;
+    background: #cb2d6f;
     color: white;
     border-radius: 10px;
     margin: 10px 0;

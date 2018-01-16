@@ -6,36 +6,57 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                 <div class="panel-heading">Edit Quiz</div>
+                <div class="panel-subheading {{ $quiz->category }}">
+                    <div>{{ $quiz->quiz }}</div>
+                </div>
                     @if(isset($message))
-                        <div>{{ $message }}</div>
+                        <div class="alert alert-success">{{ $message }}</div>
                     @endif
                      @if (session('status'))
                         <div class="alert alert-success">
                             {{ session('status') }}
                         </div>
                     @endif
-                    <div class="panel-body">
-                        
-                        <form action="/edit-quiz/{{$quiz->id}}" method="post">
-                        {{ csrf_field() }}
-                             <input name="name" value="{{ $quiz->quiz }}"></input>
-                             <button class="btn btn-primary">Update Quiz Name</button>
-                        </form>
+                    <div class="panel-body edit-quiz-container">
+                        <div>
+                            <h3>Update Quiz</h3>
+                            <form action="/edit-quiz/{{$quiz->id}}" method="post">
+                            {{ csrf_field() }}
+                                <input name="name" value="{{ $quiz->quiz }}"></input>
+                                <select name="category" id="">
+                                    @foreach ($subjects as $subject)
+                                        @if ($subject[0] === $quiz->category)
+                                            <option selected value="{{ $subject[0] }}">{{ $subject[0] }}</option>
+                                        @else
+                                            <option value="{{ $subject[0] }}">{{ $subject[0] }}</option>
+                                        @endif                               
+                                    @endforeach
+                                </select>
+                                <button type="submit" class="btn btn-primary">Update Quiz</button>
+                            </form>
+                        </div>
 
-                        <a href="/create-question/{{$quiz->id}}"><button class="btn btn-primary">Add Question</button></a>
+                        <div>
+                            <h3>New Question</h3>
+                            <a href="/create-question/{{$quiz->id}}"><button class="btn btn-primary">Add Question</button></a>
+                        </div>
 
-                        @foreach($quiz->questions()->get() as $question)
-                            <div>
-                                <div>{{$question->question}}</div>
-                                <a href="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}"><button class="btn btn-primary">Edit Question</button></a>
-                                <form method="POST" action="/delete-quiz/{{$quiz->id}}/question/{{$question->id}}">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-primary" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        @endforeach
-                        
+                        <div>
+                            <h3>Questions</h3>
+                            @foreach($quiz->questions()->get() as $question)
+                                <div class="edit-questions-list">
+                                    <div>{{$question->question}}</div>
+                                    <div>
+                                        <a href="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}"><button class="btn btn-primary">Edit Question</button></a>
+                                        <form method="POST" action="/delete-quiz/{{$quiz->id}}/question/{{$question->id}}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button class="btn btn-logout" type="submit">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
 
             </div>

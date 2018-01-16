@@ -5,14 +5,31 @@
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <h2>Category: {{ $quiz->category }}</h2>
-                <h2>Quiz: {{ $quiz->quiz }}</h2>
-                <h4>Scores</h4>
-                <a href="/admin"><button class="btn btn-primary">Back to Dashboard</button></a>
-                @foreach($scores as $score)
-                    <div>{{$score->name}}</div>
-                    <div>{{$score->score}}</div>
-                @endforeach
+                <div class="panel-heading">Scores</div>
+                <div class="panel-subheading  {{ $quiz->category }}">
+                    {{ $quiz->quiz }}
+                </div>
+                <div class="scores-container">
+                    <table class="scoresTable">
+                        <thead>
+                            <th>Student</th>
+                            <th>Time</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody>
+                            @foreach($scores as $score)
+                                <tr>
+                                    <td>{{$score->name}}</td>
+                                    <td>{{$score->time}}</td>
+                                    <td>{{$score->score}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    
+                    <a href="/admin"><button class="btn btn-primary">Back to Dashboard</button></a>
+                </div>
+                
             </div>
         </div>
     </div>

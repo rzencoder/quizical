@@ -1,13 +1,12 @@
 <template>
-<div v-show="quiz">
+<div class="panel panel-default" v-show="quiz">
     <div>
-        <div>{{quiz.category}}</div>
-        <div>{{quiz.quiz}}</div>
-        <div>Top {{scores.length}}</div>
+        <div class="panel-heading">Results - Top {{scores.length}}</div>
+        <div :class="['panel-subheading', quiz.category]">{{quiz.quiz}}</div>
     </div>
     
     <div class="list">
-        <div class="student">
+        <div class="table-header">
             <div>Position</div>
             <div>Name</div>
             <div>Score</div>
@@ -15,11 +14,11 @@
         </div>
         <transition-group name="fly" class="list">
             <div :style="{order: scores.length - i}" :key="student.id" v-for="(student, i) in current">
-                <div class="student">
+                <div :class="['student', medal(i) ]">
                     <div>{{ scores.length - i }}</div>
                     <div>{{ student.name }}</div>
                     <div>{{ student.score }}</div>
-                    <div>{{ student.time }}</div>
+                    <div>{{ student.time }}s</div>
                 </div>
             </div>
         </transition-group>
@@ -38,8 +37,25 @@
                current: []
            }
         },
+        
+        
 
         methods: {
+             medal (i) {
+                switch (this.scores.length - i) {
+                    case 1:
+                        return 'gold'
+                        break;
+                     case 2:
+                        return 'silver'
+                        break;
+                     case 3:
+                        return 'bronze'
+                        break;
+                    default:
+                        break;
+                }
+            },
             animateResults () {
                 this.scores.forEach((score, i) => {
                     setTimeout(() => {
@@ -79,8 +95,36 @@ body {
     display: flex;
     width: 100%;
     justify-content: space-between;
+    background: #cb2d6f;
+    color: $white;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-shadow: 2px 2px #222;
+    font-family: $font-family-cursive;
+    font-size: 2rem;
+    text-align: center;
     > div {
         width: 25%;
+        text-align: center;
+    }
+}
+
+.table-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: #14a098;
+    color: $white;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-shadow: 2px 2px #222;
+    font-family: $font-family-cursive;
+    font-size: 1.8rem;
+    > div {
+        width: 25%;
+        text-align: center;
     }
 }
 
@@ -90,6 +134,25 @@ body {
 .fly-enter, .fly-leave-to /* .fly-leave-active below version 2.1.8 */ {
   transform: translate(-200px);
     opacity: 0;
+}
+
+.gold {
+    background: gold;
+    font-size: 4rem;
+}
+
+.silver {
+    background: silver;
+    font-size: 3.5rem;
+}
+
+.bronze {
+    background: brown;
+    font-size: 3rem;
+}
+
+.panel {
+    background: $body-bg;
 }
 
 </style>
