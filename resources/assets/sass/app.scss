@@ -4,123 +4,22 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto");
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
-// Partials
+// Helpers
 @import "helpers/variables";
 @import "helpers/categories";
+//Components
 @import "components/buttons";
 @import "components/navigation";
 @import "components/panels";
 @import "components/tables";
+//Layout
 @import "layouts/layout";
 @import "layouts/typography";
+@import "layouts/forms";
+//Pages
 @import "pages/welcome";
-
-.quiz-list-item {
-    background: $dark-blue;
-    color: $white;
-    font-family: $font-family-base;
-    padding: 10px 20px;
-    font-size: 1.8rem;
-    border-bottom: 1px solid $light-grey;
-    display: flex;
-    justify-content: space-between;
-    a {
-        color: $white;
-    }
-}
-
-.category-header {
-    color: $white;
-    text-transform: capitalize;
-    font-weight: 700;
-    font-size: 1.8rem;
-    cursor: pointer;
-}
-
-.category-icon {
-    width: 24px;
-}
-
-.dashboard-container {
-    margin-left: 15px;
-}
-
-.accordion {
-    background: $light-grey;
-    padding: 20px;
-}
-
-.new-quiz-container {
-    padding: 10px 20px 10px 0;
-    display: flex;
-    justify-content: space-between;
-    >div>select {
-        font-size: 1.2rem;
-        padding: 5px;
-        font-family: $font-family-base;
-    }
-}
-
-.admin-quiz-list-btns {
-    display: flex;
-    button {
-        margin: 0 5px;
-    }
-}
-
-.admin-quiz-list {
-    background: $dark-blue;
-    color: $white;
-    padding: 5px 5px 10px;
-    width: 95%;
-    margin: 10px 0;
-    border-radius: 5px;
-    >h2 {
-        font-family: $font-family-title;
-        margin: 0;
-        padding: 5px;
-        font-size: 2.5rem;
-    }
-}
-
-.new-question-container {
-    padding: 10px 20px;
-    label {
-        font-weight: 700;
-        font-size: 1.7rem;
-    }
-}
-
-.edit-quiz-container {
-    select {
-        font-size: 1.2rem;
-        padding: 5px;
-        font-family: $font-family-base;
-    }
-    option {
-        text-transform: capitalize;
-    }
-    >div {
-        padding-bottom: 10px;
-        border-bottom: 2px solid $dark-blue;
-    }
-}
-
-.edit-questions-list {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    >div {
-        display: flex;
-        font-size: 2rem;
-        font-weight: 700;
-        padding: 5px;
-        button {
-            margin: 0 5px;
-        }
-    }
-}
-
-.scores-container {
-    padding: 10px;
-}
+@import "pages/admin-dashboard";
+@import "pages/user-dashboard";
+@import "pages/edit-quiz";
+@import "pages/new-question";
+@import "pages/scores";

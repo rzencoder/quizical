@@ -1,0 +1,38 @@
+@import '../helpers/variables';
+
+.dashboard-container {
+    margin-left: 15px;
+}
+
+.admin-quiz-list {
+    background: $dark-blue;
+    color: $white;
+    padding: 5px 5px 10px;
+    width: 95%;
+    margin: 10px 0;
+    border-radius: 5px;
+    > h2 {
+        font-family: $font-family-title;
+        margin: 0;
+        padding: 5px;
+        font-size: 2.5rem;
+    }
+}
+
+.new-quiz-container {
+    padding: 10px 20px 10px 0;
+    display: flex;
+    justify-content: space-between;
+    > div > select {
+        font-size: 1.2rem;
+        padding: 5px;
+        font-family: $font-family-base;
+    }
+}
+
+.admin-quiz-list-btns {
+    display: flex;
+    button {
+        margin: 0 5px;
+    }
+}

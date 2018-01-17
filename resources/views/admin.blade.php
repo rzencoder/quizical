@@ -10,7 +10,8 @@
                 </div>
                 <div class="dashboard-container">                
                     <h3>Welcome {{ Auth::user()->name }}</h3>
-                    <a href="/home/update"><button class="btn btn-primary">Update Account</button></a>
+                    <a href="/admin/update"><button class="btn btn-primary">Update Account</button></a>
+                    <a href="/admin/update/password"><button class="btn btn-secondary">Change Password</button></a>
                     <a href=""><button class="btn btn-logout">Logout</button></a>
                     <div class="panel-body">
                         @if (session('status'))
@@ -51,23 +52,21 @@
                 <div class="dashboard-container">
                     @if(isset($quizzes))
                         @foreach($quizzes as $quiz)
-                        <div class="admin-quiz-list">
-                            <h2>{{ $quiz->quiz }}</h2>
-                            <div class="admin-quiz-list-btns">
-                                <a href="show-results/{{$quiz->id}}"><button class="btn btn-primary">See Results</button></a>
-                                <a href="present-results/{{$quiz->id}}"><button class="btn btn-primary">Present Latest Results</button></a>
-                                <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
-                                <form method="POST" action="/delete-quiz/{{$quiz->id}}">
-                                    {{ csrf_field() }}
-                                    {{ method_field('DELETE') }}
-                                    <button class="btn btn-logout" type="submit">Delete</button>
-                                </form>
+                            <div class="admin-quiz-list">
+                                <h2>{{ $quiz->quiz }}</h2>
+                                <div class="admin-quiz-list-btns">
+                                    <a href="show-results/{{$quiz->id}}"><button class="btn btn-primary">See Results</button></a>
+                                    <a href="present-results/{{$quiz->id}}"><button class="btn btn-primary">Present Latest Results</button></a>
+                                    <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
+                                    <form method="POST" action="/delete-quiz/{{$quiz->id}}">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
+                                        <button class="btn btn-logout" type="submit">Delete</button>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
                         @endforeach
-                    @endif
-                    
-                    
+                    @endif                
                 </div>
             </div>
         </div>

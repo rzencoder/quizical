@@ -35,8 +35,8 @@ Route::get('/show-results/{quiz}', 'QuizController@show');
 Route::get('/present-results/{quiz}', 'QuizController@present');
 Route::get('/present-results/{quiz}/data', 'QuizController@presentData');
 
-Route::get('/changePassword', 'QuestionController@showChangePasswordForm');
-Route::post('/changePassword', 'QuestionController@changePassword')->name('changePassword');
+Route::get('/home/update/password', 'QuestionController@showChangePasswordForm');
+Route::post('/home/update/password', 'QuestionController@changePassword')->name('changePassword');
 
 Route::get('/home/update', 'QuestionController@showChangeUserDetailsForm');
 Route::post('/home/update', 'QuestionController@changeUserDetails')->name('changeUserDetails');
@@ -50,8 +50,8 @@ Route::prefix('admin')->group(function() {
     Route::post('/password/reset', 'Auth\AdminResetPasswordController@reset');
     Route::get('/password/reset', 'Auth\AdminForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     Route::get('/password/reset/{token}', 'Auth\AdminResetPasswordController@showResetForm')->name('admin.password.reset');
-    Route::get('/changePassword', 'AdminController@showChangePasswordForm');
-    Route::post('/changePassword', 'AdminController@changePassword')->name('admin.changePassword');
+    Route::get('/update/password', 'AdminController@showChangePasswordForm');
+    Route::post('/update/password', 'AdminController@changePassword')->name('admin.changePassword');
     Route::get('/update', 'AdminController@showChangeUserDetailsForm');
     Route::post('/update', 'AdminController@changeUserDetails')->name('admin.changeUserDetails');
 });

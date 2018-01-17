@@ -1,0 +1,31 @@
+@import '../helpers/variables';
+.accordion {
+    background: $light-grey;
+    padding: 20px;
+}
+
+.category-header {
+    color: $white;
+    text-transform: capitalize;
+    font-weight: 700;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+.category-icon {
+    width: 24px;
+}
+
+.quiz-list-item {
+    background: $dark-blue;
+    color: $white;
+    font-family: $font-family-base;
+    padding: 10px 20px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid $light-grey;
+    display: flex;
+    justify-content: space-between;
+    a {
+        color: $white;
+    }
+}

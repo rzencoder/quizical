@@ -1,9 +1,11 @@
+@import '../helpers/variables';
+
 .welcome-container {
     width: 100%;
     display: flex;
 }
 
-.one {
+.welcome-heading-container {
     width: 70%;
     height: 100%;
     margin: 100px auto;
@@ -11,7 +13,7 @@
         margin-top: -10px;
         font-size: 4rem;
     }
-    >div {
+    > div {
         display: flex;
         button {
             margin: 10px;
@@ -19,7 +21,7 @@
     }
 }
 
-.class-img {
+.home-bg {
     background: linear-gradient(rgba(15, 41, 47, 0.85), rgba(15, 41, 47, 0.85)), url('../img/class.jpg');
     background-size: cover;
     height: 600px;
