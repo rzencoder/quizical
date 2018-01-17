@@ -8386,33 +8386,45 @@ button.close {
   background: #da0758;
 }
 
-.btn-1 {
-  background: #14a098;
+.btn {
   color: #fefcfb;
-  font-size: 3rem;
-}
-
-.btn-2 {
-  background: #cb2d6f;
-  color: #fefcfb;
-  font-size: 3rem;
+  border: none;
 }
 
 .btn-primary {
   background: #14a098;
 }
 
+.btn-primary:hover {
+  background: #1acdc3;
+  color: #fefcfb;
+}
+
 .btn-secondary {
   background: #501f3a;
 }
 
+.btn-secondary:hover {
+  background: #752d55;
+  color: #fefcfb;
+}
+
 .btn-logout {
   background: #cb2d6f;
+}
+
+.btn-logout:hover {
+  background: #d9528a;
   color: #fefcfb;
 }
 
 .btn-link {
   color: #14a098;
+}
+
+.btn-link:hover {
+  background: #1acdc3;
+  color: #fefcfb;
 }
 
 .navbar {

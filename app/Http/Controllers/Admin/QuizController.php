@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 use App\Quiz;
 use App\Question;
@@ -88,7 +89,8 @@ class QuizController extends Controller
 
     public function show(Quiz $quiz)
     {
-        $scores = $quiz->scores()->get();
+        $date = Carbon::now()->subMinutes(request('time'));
+        $scores = $quiz->scores()->where('created_at', '>', $date)->get();
         $users = [];
         foreach ($scores as $score) {
             $score->name = $score->user()->get()[0]->name;
@@ -99,12 +101,14 @@ class QuizController extends Controller
 
     public function present(Quiz $quiz)
     {
-        return view('dashboard.present');
+        $time = request('time');
+        return view('dashboard.present', ['time' => $time ]);
     }
 
     public function presentData(Quiz $quiz)
     {
-        $scores = $quiz->scores()->get();
+        $date = Carbon::now()->subMinutes(request('time'));
+        $scores = $quiz->scores()->where('created_at', '>', $date)->get();
         
         $users = [];
         foreach ($scores as $score) {

@@ -1,7 +1,11 @@
 <template>
 <div class="panel panel-default" v-show="quiz">
+    {{ timerange }}
     <div>
-        <div class="panel-heading">Results - Top {{scores.length}}</div>
+        <div class="panel-heading results-title">
+            <div>Results - {{ range }}</div>
+            <div>Top {{scores.length}}</div>
+        </div>
         <div :class="['panel-subheading', quiz.category]">{{quiz.quiz}}</div>
     </div>
     
@@ -30,6 +34,9 @@
 <script>
 
     export default {
+        
+        props: ['timerange'],
+
         data () {
            return {
                quiz: '',
@@ -38,6 +45,27 @@
            }
         },
         
+        computed: {
+            range () {
+                switch (this.timerange) {
+                    case 10:
+                        return '10 minutes';
+                        break;
+                    case 1440:
+                        return 'Today';
+                        break;
+                    case 10080:
+                        return 'This Week';
+                        break;
+                    case 302400:
+                        return 'This Month';
+                        break;
+                    default:
+                        return 'All Time';
+                        break;
+                }
+            }
+        },
         
 
         methods: {
@@ -66,8 +94,7 @@
         },
 
         mounted () {
-            axios.get(window.location.pathname + '/data').then(response => {         
-                  
+            axios.post(window.location.pathname + '/data', {'time': this.timerange}).then(response => {         
                 this.quiz = response.data.quiz;
                 this.scores = response.data.scores.reverse();   
                 console.log(this.quiz);    
@@ -155,4 +182,8 @@ body {
     background: $dark-blue;
 }
 
+.results-title {
+    display: flex;
+    justify-content: space-between;
+}
 </style>

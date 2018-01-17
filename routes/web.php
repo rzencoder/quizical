@@ -31,9 +31,9 @@ Route::get('/edit-quiz/{quiz}/question/{question}', 'QuizController@showEditQues
 Route::post('/edit-quiz/{quiz}/question/{question}', 'QuizController@editQuestion');
 Route::delete('/delete-quiz/{quiz}/question/{question}', 'QuizController@destroyQuestion');
 Route::delete('/delete-quiz/{quiz}', 'QuizController@destroy');
-Route::get('/show-results/{quiz}', 'QuizController@show');
-Route::get('/present-results/{quiz}', 'QuizController@present');
-Route::get('/present-results/{quiz}/data', 'QuizController@presentData');
+Route::post('/show-results/{quiz}', 'QuizController@show');
+Route::post('/present-results/{quiz}', 'QuizController@present');
+Route::post('/present-results/{quiz}/data', 'QuizController@presentData');
 
 Route::get('/home/update/password', 'QuestionController@showChangePasswordForm');
 Route::post('/home/update/password', 'QuestionController@changePassword')->name('changePassword');

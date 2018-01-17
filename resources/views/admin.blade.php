@@ -55,8 +55,28 @@
                             <div class="admin-quiz-list">
                                 <h2>{{ $quiz->quiz }}</h2>
                                 <div class="admin-quiz-list-btns">
-                                    <a href="show-results/{{$quiz->id}}"><button class="btn btn-primary">See Results</button></a>
-                                    <a href="present-results/{{$quiz->id}}"><button class="btn btn-primary">Present Latest Results</button></a>
+                                    <form method="POST" action="/show-results/{{$quiz->id}}">
+                                        {{ csrf_field() }}
+                                        <select name="time" id="">
+                                            <option value="10">Ten Minutes</option>
+                                            <option value="1440">Day</option>
+                                            <option value="10080">Week</option>
+                                            <option value="302400">Month</option>
+                                            <option value="300000000">All Time</option>
+                                        </select>
+                                        <button class="btn btn-primary" type="submit">See Results</button>
+                                    </form>
+                                    <form method="POST" action="/present-results/{{$quiz->id}}">
+                                        {{ csrf_field() }}
+                                        <select name="time" id="">
+                                            <option value="10">Ten Minutes</option>
+                                            <option value="1440">Day</option>
+                                            <option value="10080">Week</option>
+                                            <option value="302400">Month</option>
+                                            <option value="300000000">All Time</option>
+                                        </select>
+                                        <button class="btn btn-primary" type="submit">Present Results</button>
+                                    </form>
                                     <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
                                     <form method="POST" action="/delete-quiz/{{$quiz->id}}">
                                         {{ csrf_field() }}

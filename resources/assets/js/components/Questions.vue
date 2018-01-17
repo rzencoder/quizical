@@ -4,22 +4,25 @@
         <div class="time">Time Left: <span>{{ formattedTime }}</span></div>
         <div v-if="quiz" class="question-container">
             <div :class="[category]" class="quiz-title">{{ quiz.quiz }}</div>
+            
             <transition name="list" mode="out-in">
                 <div :key="number">
                     <div class="question-title">{{ quiz.questions[number].question }}</div>
+                    <div :class="['quiz-message', message]">{{ message }}</div>
                     <div class="answer-container">
                         <div class="answer" :disabled="disabled" :key="answer.id" @click="checkAnswer" v-for="answer in quiz.questions[number].answers">{{ answer.answer }}</div>  
                     </div>  
                 </div>   
             </transition>     
         </div>
-        <div>{{ message }}</div>    
+            
     </div>
 
     <transition name="fade">
         <div v-if="showModal" class="modal-wrap">
             <div class="modal-container">
-                <h2 >You Scored: {{ score }}</h2>
+                <h2 >You Scored</h2>
+                <h2 class="modal-score">{{ score }}</h2>
                 <a href="/home"><button class="btn btn-primary">Back to Dashboard</button></a>
             </div>
         </div>
@@ -70,13 +73,16 @@
                 this.quiz.questions[this.number].answers.forEach(answer => {
                     if(answer.answer === event.target.innerHTML && answer.correct){
                         this.score++;
-                        event.target.style.background = 'green';
+                        event.target.style.background = '#044e08';
+                        this.message = "correct";
                     } else if (answer.answer === event.target.innerHTML && !answer.correct){
-                        event.target.style.background = 'red';
+                        event.target.style.background = '#cf0505';
+                        this.message = "incorrect";
                     }
                 });
                 setTimeout(() => {
                     this.disabled = false;
+                    this.message = "";
                     if (this.number + 1 >= this.quiz.questions.length) {
                         this.endQuiz();
                     } else {
@@ -151,15 +157,24 @@
     }
 
 .modal-container {
+    font-family: $font-family-title;
     width: 300px;
     height: 200px;
     color: $white;
     background: $dark-blue;
-    border: 5px solid $pink;
+    border: 3px solid $light-blue;
     border-radius: 5px;
     z-index: 3;
     position: relative;
     text-align: center;
+    button {
+        font-family: $font-family-base;
+    }
+}
+
+.modal-score {
+    font-size: 80px;
+    margin-top: -10px;
 }
 
 .question-container {
@@ -203,7 +218,8 @@
     margin: 10px 0;
     cursor: pointer;
     &:hover {
-        background: lighten($pink , 10%);
+        background: lighten($pink, 10%);
+        color: $white;
     }
     @media (max-width: 500px) {
         width: 95%;
@@ -229,6 +245,20 @@
 
 .time {
     color: $white;
+}
+
+.quiz-message {
+    height: 30px;
+    text-transform: uppercase;
+    font-family: $font-family-title;
+}
+
+.correct {
+    color: #044e08;
+}
+
+.incorrect {
+    color: #cf0505;
 }
 
 </style>
