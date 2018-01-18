@@ -43514,7 +43514,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-wrap {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  margin: -200px auto;\n}\n.modal-container {\n  font-family: \"Raleway\", sans-serif;\n  width: 300px;\n  height: 200px;\n  color: #fefcfb;\n  background: #0f292f;\n  border: 3px solid #14a098;\n  border-radius: 5px;\n  z-index: 3;\n  position: relative;\n  text-align: center;\n}\n.modal-container button {\n    font-family: \"Roboto\", sans-serif;\n}\n.modal-score {\n  font-size: 80px;\n  margin-top: -10px;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Roboto\", sans-serif;\n  text-align: center;\n  background: #cccccc;\n  border-radius: 10px;\n}\n.quiz-title {\n  color: #fefcfb;\n  font-family: \"Raleway\", sans-serif;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px 5px 0 0;\n}\n.panel {\n  background: #fefcfb;\n}\n.question-title {\n  color: #fefcfb;\n  background: #444;\n  padding: 5px 0;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n}\n.answer {\n  width: 40%;\n  background: #cb2d6f;\n  color: #fefcfb;\n  border-radius: 10px;\n  margin: 10px 0;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #d9528a;\n    color: #fefcfb;\n}\n@media (max-width: 500px) {\n.answer {\n      width: 95%;\n}\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 1s ease-out;\n  transition: opacity 1s ease-out;\n  opacity: 1;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.list-enter, .list-leave-to {\n  opacity: 0;\n}\n.time {\n  color: #fefcfb;\n}\n.quiz-message {\n  height: 30px;\n  text-transform: uppercase;\n  font-family: \"Raleway\", sans-serif;\n}\n.correct {\n  color: #044e08;\n}\n.incorrect {\n  color: #cf0505;\n}\n", ""]);
+exports.push([module.i, "\n.overlay {\n  position: absolute;\n  top: 0;\n  background: #000;\n  opacity: 0.5;\n  width: 100%;\n  height: 100%;\n}\n.display {\n  display: none;\n}\n.modal-wrap {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n}\n.modal-container {\n  font-family: \"Raleway\", sans-serif;\n  width: 100%;\n  max-width: 300px;\n  height: 200px;\n  color: #fefcfb;\n  background: #0f292f;\n  border: 3px solid #14a098;\n  border-radius: 5px;\n  z-index: 3;\n  position: absolute;\n  text-align: center;\n  top: 100px;\n}\n.modal-container button {\n    font-family: \"Roboto\", sans-serif;\n}\n.modal-score {\n  font-size: 80px;\n  margin-top: -10px;\n}\n.question-container {\n  font-size: 2.5rem;\n  font-family: \"Roboto\", sans-serif;\n  text-align: center;\n  background: #cccccc;\n  border-radius: 5px;\n}\n.quiz-title {\n  color: #fefcfb;\n  font-family: \"Raleway\", sans-serif;\n  text-transform: uppercase;\n  padding: 5px;\n  border-radius: 5px 5px 0 0;\n  border-bottom: 2px solid #cccccc;\n}\n.panel {\n  background: #fefcfb;\n}\n.question-title {\n  color: #fefcfb;\n  background: #444;\n  padding: 5px 0;\n  -webkit-box-shadow: 0 2px 4px #777;\n          box-shadow: 0 2px 4px #777;\n}\n.answer-container {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  padding-bottom: 30px;\n}\n.answer {\n  width: 40%;\n  background: #cb2d6f;\n  color: #fefcfb;\n  border-radius: 10px;\n  margin: 10px 0;\n  padding: 10px 0;\n  font-family: \"Raleway\", sans-serif;\n  text-shadow: 2px 2px #222;\n  -webkit-box-shadow: 2px 3px 5px #777;\n          box-shadow: 2px 3px 5px #777;\n  cursor: pointer;\n}\n.answer:hover {\n    background: #d9528a;\n    color: #fefcfb;\n}\n@media (max-width: 500px) {\n.answer {\n      width: 95%;\n}\n}\n.fade-enter-active, .fade-leave-active {\n  -webkit-transition: opacity 1s ease-out;\n  transition: opacity 1s ease-out;\n  opacity: 1;\n}\n.fade-enter, .fade-leave-to {\n  opacity: 0;\n}\n.list-enter-active, .list-leave-active {\n  -webkit-transition: all 0.5s;\n  transition: all 0.5s;\n}\n.list-enter, .list-leave-to {\n  opacity: 0;\n}\n.time {\n  color: #fefcfb;\n}\n.quiz-message {\n  height: 30px;\n  padding: 10px;\n  margin-bottom: 10px;\n  text-transform: uppercase;\n  font-family: \"Raleway\", sans-serif;\n}\n.correct {\n  color: #044e08;\n}\n.incorrect {\n  color: #cf0505;\n}\n", ""]);
 
 // exports
 
@@ -43732,7 +43732,9 @@ var render = function() {
                 _c("h2", [_vm._v("You Scored")]),
                 _vm._v(" "),
                 _c("h2", { staticClass: "modal-score" }, [
-                  _vm._v(_vm._s(_vm.score))
+                  _vm._v(
+                    _vm._s(_vm.score) + "/" + _vm._s(_vm.quiz.questions.length)
+                  )
                 ]),
                 _vm._v(" "),
                 _c("a", { attrs: { href: "/home" } }, [
@@ -44157,8 +44159,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         range: function range() {
             switch (this.timerange) {
-                case 10:
-                    return '10 minutes';
+                case 60:
+                    return 'Last Hour';
                     break;
                 case 1440:
                     return 'Today';

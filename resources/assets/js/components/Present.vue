@@ -48,8 +48,8 @@
         computed: {
             range () {
                 switch (this.timerange) {
-                    case 10:
-                        return '10 minutes';
+                    case 60:
+                        return 'Last Hour';
                         break;
                     case 1440:
                         return 'Today';

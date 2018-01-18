@@ -20,7 +20,7 @@
                             @foreach($scores as $score)
                                 <tr>
                                     <td>{{$score->name}}</td>
-                                    <td>{{$score->time}}</td>
+                                    <td>{{$score->time}}s</td>
                                     <td>{{$score->score}}</td>
                                 </tr>
                             @endforeach

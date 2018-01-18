@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="panel panel-default">
-                <div class="panel-heading">ADMIN Reset Password</div>
+                <div class="panel-heading">Teacher Reset Password</div>
 
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('admin.password.request') }}">

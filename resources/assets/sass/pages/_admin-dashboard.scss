@@ -1,21 +1,42 @@
 @import '../helpers/variables';
-
 .dashboard-container {
-    margin-left: 15px;
+    padding: 5px 10px;
 }
 
 .admin-quiz-list {
-    background: $dark-blue;
+    background: lighten($dark-blue, 15%);
     color: $white;
-    padding: 5px 5px 10px;
     width: 95%;
-    margin: 10px 0;
+    margin: 10px auto;
     border-radius: 5px;
-    > h2 {
+    .admin-quiz-title {
         font-family: $font-family-title;
+        background: $dark-blue;
+        border-radius: 5px 5px 0 0;
         margin: 0;
-        padding: 5px;
+        padding: 5px 10px;
         font-size: 2.5rem;
+    }
+    select {
+        color: $font-black;
+    }
+    option {
+        color: $font-black;
+    }
+    form {
+        >div {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: lighten($dark-blue, 25%);
+            padding: 5px;
+            border-radius: 5px;
+            margin: 10px;
+            font-size: 1.8rem;
+            select {
+                margin: 0 5px;
+            }
+        }
     }
 }
 
@@ -23,7 +44,9 @@
     padding: 10px 20px 10px 0;
     display: flex;
     justify-content: space-between;
-    > div > select {
+    align-items: center;
+    flex-wrap: wrap;
+    >div>select {
         font-size: 1.2rem;
         padding: 5px;
         font-family: $font-family-base;
@@ -31,8 +54,12 @@
 }
 
 .admin-quiz-list-btns {
-    display: flex;
     button {
         margin: 0 5px;
     }
+}
+
+.admin-list-btn-container {
+    display: flex;
+    padding: 5px 5px 10px;
 }

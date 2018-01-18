@@ -1,4 +1,13 @@
 @import '../helpers/variables';
+
+.dashboard-btns {
+    display: flex;
+    flex-wrap: wrap;
+    > a {
+        margin: 5px;
+    }
+}
+
 .accordion {
     background: $light-grey;
     padding: 20px;
@@ -17,7 +26,7 @@
 }
 
 .quiz-list-item {
-    background: $dark-blue;
+    background: lighten($dark-blue, 10%);
     color: $white;
     font-family: $font-family-base;
     padding: 10px 20px;
@@ -25,7 +34,20 @@
     border-bottom: 1px solid $light-grey;
     display: flex;
     justify-content: space-between;
+    div:nth-child(1) {
+        width: 80%;
+    }
+    div:nth-child(2),
+    div:nth-child(3) {
+        min-width: 50px;
+        text-align: center;
+    }
     a {
         color: $white;
     }
+}
+
+.quiz-list-header {
+    background: $dark-blue;
+    font-weight: 700;
 }

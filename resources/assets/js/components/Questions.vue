@@ -21,8 +21,8 @@
     <transition name="fade">
         <div v-if="showModal" class="modal-wrap">
             <div class="modal-container">
-                <h2 >You Scored</h2>
-                <h2 class="modal-score">{{ score }}</h2>
+                <h2>You Scored</h2>
+                <h2 class="modal-score">{{ score }}/{{ quiz.questions.length }}</h2>
                 <a href="/home"><button class="btn btn-primary">Back to Dashboard</button></a>
             </div>
         </div>
@@ -153,20 +153,24 @@
     .modal-wrap {
         display: flex;
         justify-content: center;
-        margin: -200px auto;
     }
 
 .modal-container {
     font-family: $font-family-title;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 200px;
     color: $white;
     background: $dark-blue;
     border: 3px solid $light-blue;
     border-radius: 5px;
     z-index: 3;
-    position: relative;
+    position: absolute;
     text-align: center;
+    top: 100px;
+    @media (max-width: 400px){
+        
+    }
     button {
         font-family: $font-family-base;
     }
@@ -182,7 +186,7 @@
     font-family: $font-family-base;
     text-align: center;
     background: $light-grey;
-    border-radius: 10px;
+    border-radius: 5px;
 }
 
 .quiz-title {
@@ -191,7 +195,7 @@
     text-transform: uppercase;
     padding: 5px;
     border-radius: 5px 5px 0 0;
-
+    border-bottom: 2px solid $light-grey;
 }
 
 .panel {
@@ -202,12 +206,14 @@
     color: $white;
     background: #444;
     padding: 5px 0;
+    box-shadow: 0 2px 4px #777;
 }
 
 .answer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    padding-bottom: 30px;
 }
 
 .answer {
@@ -216,6 +222,10 @@
     color: $white;
     border-radius: 10px;
     margin: 10px 0;
+    padding: 10px 0;
+    font-family: $font-family-title;
+    text-shadow: 2px 2px #222;
+    box-shadow: 2px 3px 5px #777;
     cursor: pointer;
     &:hover {
         background: lighten($pink, 10%);
@@ -249,6 +259,8 @@
 
 .quiz-message {
     height: 30px;
+    padding: 10px;
+    margin-bottom: 10px;
     text-transform: uppercase;
     font-family: $font-family-title;
 }

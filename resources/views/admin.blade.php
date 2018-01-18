@@ -6,7 +6,7 @@
         <div class="col-md-8">
             <div class="panel panel-default">
                  <div class="panel-heading">
-                    <div>Dashboard</div>
+                    <div>Teacher Dashboard</div>
                 </div>
                 <div class="dashboard-container">                
                     <h3>Welcome {{ Auth::user()->name }}</h3>
@@ -53,36 +53,48 @@
                     @if(isset($quizzes))
                         @foreach($quizzes as $quiz)
                             <div class="admin-quiz-list">
-                                <h2>{{ $quiz->quiz }}</h2>
+                                <div class="admin-quiz-title">{{ $quiz->quiz }}</div>
                                 <div class="admin-quiz-list-btns">
                                     <form method="POST" action="/show-results/{{$quiz->id}}">
                                         {{ csrf_field() }}
-                                        <select name="time" id="">
-                                            <option value="10">Ten Minutes</option>
-                                            <option value="1440">Day</option>
-                                            <option value="10080">Week</option>
-                                            <option value="302400">Month</option>
-                                            <option value="300000000">All Time</option>
-                                        </select>
-                                        <button class="btn btn-primary" type="submit">See Results</button>
+                                        <div>
+                                            <div>
+                                                <label for="time">Display Results from:</label>
+                                                <select name="time" id="">
+                                                    <option value="60">Last Hour</option>
+                                                    <option value="1440">Today</option>
+                                                    <option value="10080">This Week</option>
+                                                    <option value="302400">This Month</option>
+                                                    <option value="300000000">All Time</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">See Results</button>
+                                        </div>
                                     </form>
                                     <form method="POST" action="/present-results/{{$quiz->id}}">
                                         {{ csrf_field() }}
-                                        <select name="time" id="">
-                                            <option value="10">Ten Minutes</option>
-                                            <option value="1440">Day</option>
-                                            <option value="10080">Week</option>
-                                            <option value="302400">Month</option>
-                                            <option value="300000000">All Time</option>
-                                        </select>
-                                        <button class="btn btn-primary" type="submit">Present Results</button>
+                                        <div>
+                                            <div>
+                                                <label for="time">Present Results from:</label>
+                                                <select name="time" id="">
+                                                    <option value="60">Last Hour</option>
+                                                    <option value="1440">Today</option>
+                                                    <option value="10080">This Week</option>
+                                                    <option value="302400">This Month</option>
+                                                    <option value="300000000">All Time</option>
+                                                </select>
+                                            </div>
+                                            <button class="btn btn-primary" type="submit">Present Results</button>
+                                        </div>
                                     </form>
-                                    <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
-                                    <form method="POST" action="/delete-quiz/{{$quiz->id}}">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-                                        <button class="btn btn-logout" type="submit">Delete</button>
-                                    </form>
+                                    <div class="admin-list-btn-container">
+                                        <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
+                                        <form method="POST" action="/delete-quiz/{{$quiz->id}}">
+                                            {{ csrf_field() }}
+                                            {{ method_field('DELETE') }}
+                                            <button class="btn btn-logout" type="submit">Delete</button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
