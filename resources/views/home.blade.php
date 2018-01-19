@@ -30,7 +30,7 @@
                 <div id="accordion" role="tablist" class="accordion">         
                     @foreach ($subjects as $subject)
                         <div class="card">
-                            <div class="card-header category-header collapsed {{$subject[0]}}" role="tab" id="headingOne"
+                            <div class="category-header collapsed {{$subject[0]}}" role="tab" id="headingOne"
                                 data-toggle="collapse" href="#{{ $subject[0] }}" aria-expanded="false" aria-controls="{{ $subject[0] }}">
                                 <span>
                                     <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>

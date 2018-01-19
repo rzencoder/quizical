@@ -1,11 +1,38 @@
 @import '../helpers/variables';
-
 .navbar {
-    margin: 0;
+    margin-bottom: 0;
     background: $dark-purple;
     a {
         color: $white;
         font-size: 2.5rem;
         font-family: $font-family-title;
     }
+}
+
+.nav-title {
+    &.navbar-brand {
+        color: $white;
+    }
+}
+
+.navbar-right {
+    >li>a {
+        color: $white !important;
+        font-size: 2.2rem;
+    }
+}
+
+.navbar-collapse.in,
+.navbar-collapse.collapsing {
+    background: lighten($dark-purple, 10%);
+    a {
+        &:hover {
+            color: $light-grey !important;
+        }
+    }
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+    background-color: $dark-purple;
 }

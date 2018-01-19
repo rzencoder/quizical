@@ -132,7 +132,11 @@ body {
     font-size: 2rem;
     text-align: center;
     > div {
-        width: 25%;
+        width: 15%;
+        text-align: center;
+    }
+    > div:nth-child(2) {
+        width: 55%;
         text-align: center;
     }
 }
@@ -150,7 +154,11 @@ body {
     font-family: $font-family-title;
     font-size: 1.8rem;
     > div {
-        width: 25%;
+        width: 15%;
+        text-align: center;
+    }
+    > div:nth-child(2) {
+        width: 55%;
         text-align: center;
     }
 }
@@ -166,16 +174,25 @@ body {
 .gold {
     background: gold;
     font-size: 4rem;
+    @media (max-width: 500px){
+        font-size: 2rem;
+    }
 }
 
 .silver {
     background: silver;
     font-size: 3.5rem;
+    @media (max-width: 500px){
+        font-size: 2rem;
+    }
 }
 
 .bronze {
     background: brown;
     font-size: 3rem;
+    @media (max-width: 500px){
+        font-size: 2rem;
+    }
 }
 
 .panel {

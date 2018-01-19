@@ -1,7 +1,11 @@
 <template>
 <div>
     <div>
-        <div class="time">Time Left: <span>{{ formattedTime }}</span></div>
+        <div class="time-container">
+            <div>Score: {{ score }}</div>
+            <div class="time">Time Left: <span>{{ formattedTime }}</span></div>
+        </div>
+        
         <div v-if="quiz" class="question-container">
             <div :class="[category]" class="quiz-title">{{ quiz.quiz }}</div>
             
@@ -253,8 +257,16 @@
 
 }
 
+.time-container {
+    font-family: $font-family-title;
+    font-size: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
 .time {
     color: $white;
+    
 }
 
 .quiz-message {

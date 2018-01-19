@@ -1,5 +1,4 @@
 @import '../helpers/variables';
-
 body {
     background: $dark-blue;
     color: $white;
@@ -9,4 +8,15 @@ body {
 .row {
     justify-content: center;
     margin-top: 80px;
+}
+
+.col-md-8 {
+    float: none;
+    margin: 0 auto;
+}
+
+.col-md-8.col-md-offset-4 {
+    @media (min-width: 992px) {
+        margin: 0 0 0 33.3333333%;
+    }
 }

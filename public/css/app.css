@@ -8428,7 +8428,7 @@ button.close {
 }
 
 .navbar {
-  margin: 0;
+  margin-bottom: 0;
   background: #501f3a;
 }
 
@@ -8436,6 +8436,30 @@ button.close {
   color: #fefcfb;
   font-size: 2.5rem;
   font-family: "Raleway", sans-serif;
+}
+
+.nav-title.navbar-brand {
+  color: #fefcfb;
+}
+
+.navbar-right > li > a {
+  color: #fefcfb !important;
+  font-size: 2.2rem;
+}
+
+.navbar-collapse.in,
+.navbar-collapse.collapsing {
+  background: #752d55;
+}
+
+.navbar-collapse.in a:hover,
+.navbar-collapse.collapsing a:hover {
+  color: #cccccc !important;
+}
+
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+  background-color: #501f3a;
 }
 
 .card {
@@ -8528,6 +8552,17 @@ body {
   margin-top: 80px;
 }
 
+.col-md-8 {
+  float: none;
+  margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+  .col-md-8.col-md-offset-4 {
+    margin: 0 0 0 33.3333333%;
+  }
+}
+
 h1 {
   font-family: "Raleway", sans-serif;
   font-size: 10rem;
@@ -8543,6 +8578,10 @@ h4 {
   color: #cb2d6f;
   font-size: 4rem;
   font-weight: 700;
+}
+
+.alert {
+  margin-bottom: 0;
 }
 
 .welcome-container {
@@ -8626,6 +8665,22 @@ h4 {
   font-size: 1.8rem;
 }
 
+@media (max-width: 500px) {
+  .admin-quiz-list form > div {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+
+  .admin-quiz-list form > div button {
+    margin: 5px;
+  }
+}
+
 .admin-quiz-list form > div select {
   margin: 0 5px;
 }
@@ -8685,6 +8740,7 @@ h4 {
   font-weight: 700;
   font-size: 1.8rem;
   cursor: pointer;
+  padding: 10px;
 }
 
 .category-icon {
@@ -8725,6 +8781,10 @@ h4 {
   font-weight: 700;
 }
 
+.edit-quiz-container h3 {
+  margin: 5px 0;
+}
+
 .edit-quiz-container select {
   font-size: 1.2rem;
   padding: 5px;
@@ -8759,6 +8819,18 @@ h4 {
   font-size: 2rem;
   font-weight: 700;
   padding: 5px;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+@media (max-width: 370px) {
+  .edit-questions-list > div {
+    font-size: 1.6rem;
+    padding: 5px 0;
+  }
 }
 
 .edit-questions-list > div button {
