@@ -1,5 +1,4 @@
 @import '../helpers/variables';
-
 .welcome-container {
     width: 100%;
     display: flex;
@@ -7,22 +6,41 @@
 
 .welcome-heading-container {
     width: 70%;
-    height: 100%;
-    margin: 100px auto;
+    margin: 120px auto;
     h4 {
         margin-top: -10px;
         font-size: 4rem;
     }
-    > div {
+    >div {
         display: flex;
         button {
-            margin: 10px;
+            margin: 30px 10px;
         }
+    }
+    button {
+        font-family: $font-family-title;
+        font-size: 2.2rem;
+        font-weight: 700;
+        padding: 15px 20px;
+        text-transform: uppercase;
     }
 }
 
+// ,
+// url('../img/class.jpg');
 .home-bg {
-    background: linear-gradient(rgba(15, 41, 47, 0.85), rgba(15, 41, 47, 0.85)), url('../img/class.jpg');
+    background: linear-gradient(53deg, transparent 70%, $light-blue 70%),
+     linear-gradient(120deg, transparent 60%, $pink 60%), 
+     linear-gradient(45deg, #0f292f 15%, #113036 15%, #113036 22%, #0f292f 22%, #0f292f 50%, #113036 50%, #113036 70%, #0f292f 70%, #0f292f 90%, #113036 90%);
     background-size: cover;
-    height: 600px;
+    height: 610px;
+}
+
+.triangle {
+    height: 0;
+    border-style: solid;
+    border-width: 0 0 200px 326px;
+    border-color: transparent transparent #cb2d6f transparent;
+    position: absolute;
+    z-index: 3;
 }

@@ -57,4 +57,8 @@ Route::prefix('teacher')->group(function() {
     Route::post('/update', 'AdminController@changeUserDetails')->name('admin.changeUserDetails');
 });
 
+Route::fallback(function () {
+    return response()->view('notFound', [], 404);
+});
+
     
