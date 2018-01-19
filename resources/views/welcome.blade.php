@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('content')
+@section('welcome')
 <div class="welcome-container home-bg">
     <div class="welcome-heading-container">
         <h1>QUIZICAL</h1>

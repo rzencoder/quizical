@@ -54,9 +54,8 @@ class QuizController extends Controller
         $quiz->quiz = request('name');
         $quiz->category = request('category');
         $quiz->save();
-        $message = 'Quiz Name Updated';
         $subjects = $this->subjects;
-        return view('quiz.edit', compact('message', 'quiz', 'subjects'));
+        return view('quiz.edit', compact('quiz', 'subjects'))->with('status', 'Quiz Updated');;
     }
 
     public function store(Quiz $quiz, Request $request)

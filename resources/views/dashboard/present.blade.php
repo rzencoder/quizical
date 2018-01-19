@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-sm-10">
-            <div class="panel panel-default">
-                <present  :timerange={{ $time }}></present>
-            </div>
-        </div>
+
+<div class="col-md-8">
+    <div class="panel panel-default">
+        @component('components.messages')
+                    
+        @endcomponent
+        <present  :timerange={{ $time }}></present>
     </div>
 </div>
+
 @endsection
