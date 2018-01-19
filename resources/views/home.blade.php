@@ -11,9 +11,9 @@
                 <div class="dashboard-container">
                     <h3>Welcome {{ Auth::user()->name }}</h3>
                     <div class="dashboard-btns">
-                        <a href="/home/update"><button class="btn btn-primary">Update Account</button></a>
-                        <a href="/home/update/password"><button class="btn btn-secondary">Change Password</button></a>
-                        <a href=""><button class="btn btn-logout">Logout</button></a>
+                        <a href="{{ route('changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
+                        <a href="{{ route('changeUserPasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
+                        <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
                     </div>
                     <div class="panel-body">
                         @if (session('status'))
@@ -59,14 +59,14 @@
                                             @elseif($i === count($scores) - 1 && $quiz['category'] === $subject[0])
                                                 <div class="quiz-list-item">
                                                     <span> {{ $quiz->quiz }} </span>
-                                                    <a href="quiz/{{$quiz->id}}"><button class="btn btn-primary">Start</button></a>
+                                                    <a href="{{ route('quiz.show', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Start</button></a>
                                                 </div>
                                             @endif
                                         @endfor  
                                     @elseif($quiz['category'] === $subject[0])
                                         <div class="quiz-list-item">
                                             <span> {{ $quiz->quiz }} </span>
-                                            <a href="quiz/{{$quiz->id}}"><button class="btn btn-primary">Start</button></a>
+                                            <a href="{{ route('quiz.show', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Start</button></a>
                                         </div>
                                     @endif                     
                                 @endforeach

@@ -16,8 +16,17 @@
                         </div>
                     @endif              
                 </div>
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="panel-body">
-                    <form action="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}" method="post">
+                    <form action="{{ route('quiz.editQuestion', ['quiz' => $quiz->id, 'question' => $question->id]) }}" method="post">
                     {{ csrf_field() }}
                         <div class="form-group">
                             <label for="question">Question</label>
@@ -27,12 +36,12 @@
                             @if ($loop->iteration === 1)
                                 <div class="form-group">
                                     <label class="text-success" for="correct answer">Correct Answer</label>
-                                    <input type="text" class="form-control" name="{{$answer->id}}" value="{{$answer->answer}}">
+                                    <input type="text" class="form-control" name="correct" value="{{$answer->answer}}">
                                 </div>
                             @else
                                 <div class="form-group">
-                                    <label class="text-danger" for="wrong answer">Wrong Answer {{$loop->iteration}}</label>
-                                    <input type="text" class="form-control" name="{{$answer->id}}" value="{{$answer->answer}}">
+                                    <label class="text-danger" for="wrong answer">Wrong Answer {{$loop->iteration-1}}</label>
+                                    <input type="text" class="form-control" name="wrong{{$loop->iteration-1}}" value="{{$answer->answer}}">
                                 </div>
                             @endif
                         @endforeach

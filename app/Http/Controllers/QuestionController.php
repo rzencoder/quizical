@@ -8,6 +8,7 @@ use App\Question;
 use App\Quiz;
 use App\Score;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class QuestionController extends Controller
 {
@@ -47,8 +48,10 @@ class QuestionController extends Controller
         return compact('quiz', 'questions', 'answers');
     }
 
-    public function results(Quiz $quiz)
+    public function results(Quiz $quiz, Request $request)
     {
+        
+
         $score = request('score');
         $time = request('time');
         $quiz_id = $quiz->id;
@@ -86,7 +89,7 @@ class QuestionController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with("success", "Password changed successfully !");
+        return redirect()->route('student.dashboard')->with("status", "Password changed successfully !");
 
     }
 
@@ -113,7 +116,7 @@ class QuestionController extends Controller
         $user->name = $request->get('name');
         $user->save();
 
-        return redirect()->back()->with("success", "Details changed successfully !");
+        return redirect()->route('student.dashboard')->with("status", "Details changed successfully !");
 
     }
 

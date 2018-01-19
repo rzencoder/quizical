@@ -9,7 +9,7 @@
                     <div>{{ $quiz->quiz }}</div>
                 </div>
                 <div class="new-question-container">         
-                    <form method="POST" action="/create-question/{{$quiz->id}}">
+                    <form method="POST" action="{{ route('quiz.createQuestion', ['quiz' => $quiz->id]) }}">
                         {{ csrf_field()}}
                         @if(isset($message))
                             <div class="text-success">{{$message}}</div>

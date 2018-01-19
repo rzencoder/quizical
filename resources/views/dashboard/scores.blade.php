@@ -27,7 +27,7 @@
                         </tbody>
                     </table>
                     
-                    <a href="/admin"><button class="btn btn-primary">Back to Dashboard</button></a>
+                    <a href="{{ route('admin.dashboard') }}"><button class="btn btn-primary">Back to Dashboard</button></a>
                 </div>
                 
             </div>

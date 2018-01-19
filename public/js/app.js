@@ -43626,6 +43626,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             window.clearInterval(this.interval);
             this.disabled = true;
+            console.log(window.location.pathname + '/results');
             axios.post(window.location.pathname + '/results', {
                 score: this.score,
                 time: 60 - (this.date - this.time)
@@ -43745,7 +43746,7 @@ var render = function() {
                   )
                 ]),
                 _vm._v(" "),
-                _c("a", { attrs: { href: "/home" } }, [
+                _c("a", { attrs: { href: "/student" } }, [
                   _c("button", { staticClass: "btn btn-primary" }, [
                     _vm._v("Back to Dashboard")
                   ])

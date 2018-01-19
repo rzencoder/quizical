@@ -20,7 +20,7 @@
                     <div class="panel-body edit-quiz-container">
                         <div>
                             <h3>Update Quiz</h3>
-                            <form action="/edit-quiz/{{$quiz->id}}" method="post">
+                            <form action="{{ route('quiz.edit', ['id' => $quiz->id]) }}" method="post">
                             {{ csrf_field() }}
                                 <input name="name" value="{{ $quiz->quiz }}"></input>
                                 <select name="category" id="">
@@ -38,7 +38,7 @@
 
                         <div>
                             <h3>New Question</h3>
-                            <a href="/create-question/{{$quiz->id}}"><button class="btn btn-primary">Add Question</button></a>
+                            <a href="{{ route('quiz.newQuestion', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Add Question</button></a>
                         </div>
 
                         <div>
@@ -47,8 +47,8 @@
                                 <div class="edit-questions-list">
                                     <div>{{$question->question}}</div>
                                     <div>
-                                        <a href="/edit-quiz/{{$quiz->id}}/question/{{$question->id}}"><button class="btn btn-primary">Edit Question</button></a>
-                                        <form method="POST" action="/delete-quiz/{{$quiz->id}}/question/{{$question->id}}">
+                                        <a href="{{ route('quiz.editQuestionForm', ['quiz' => $quiz->id, 'question' => $question->id]) }}"><button class="btn btn-primary">Edit Question</button></a>
+                                        <form method="POST" action="{{ route('quiz.deleteQuestion', ['quiz' => $quiz->id, 'question' => $question->id]) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button class="btn btn-logout" type="submit">Delete</button>

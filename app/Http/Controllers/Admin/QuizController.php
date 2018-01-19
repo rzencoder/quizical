@@ -24,13 +24,18 @@ class QuizController extends Controller
         return view('dashboard.new', compact('quiz'));
     }
 
-    public function create()
-    {     
+    public function create(Request $request)
+    {
+        $validatedData = $request->validate([
+            'quiz' => 'required|string',
+            'category' => 'required|string',
+        ]);
+        
         $quiz = auth()->user()->publish(
             new Quiz(request(['quiz', 'category']))
         );
 
-        return redirect("/create-question/{$quiz->id}");
+        return redirect()->route('quiz.newQuestion', ['quiz' => $quiz->id]);
     }
 
     public function edit(Quiz $quiz)
@@ -39,8 +44,13 @@ class QuizController extends Controller
         return view('quiz.edit', compact('quiz', 'subjects'));
     }
 
-    public function changeQuizName(quiz $quiz)
+    public function changeQuizName(Quiz $quiz, Request $request)
     {
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'category' => 'required',
+        ]);
+
         $quiz->quiz = request('name');
         $quiz->category = request('category');
         $quiz->save();
@@ -49,14 +59,22 @@ class QuizController extends Controller
         return view('quiz.edit', compact('message', 'quiz', 'subjects'));
     }
 
-    public function store(Quiz $quiz)
+    public function store(Quiz $quiz, Request $request)
     {
+        $validatedData = $request->validate([
+            'question' => 'required',
+            'correct' => 'required',
+            'wrong1' => 'required',
+            'wrong2' => 'required',
+            'wrong3' => 'required',
+        ]);
+
         $question = $quiz->addQuestion(request('question'));
         $question->addAnswers(request('correct'), 1);
         $question->addAnswers(request('wrong1'), 0);
         $question->addAnswers(request('wrong2'), 0);
         $question->addAnswers(request('wrong3'), 0);
-        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Added');
+        return redirect()->route('quiz.editForm', ['quiz' => $quiz->id])->with('status', 'Question Added');
     }
 
     public function showEditQuestion(Quiz $quiz, Question $question)
@@ -64,16 +82,30 @@ class QuizController extends Controller
         return view('questions.edit', compact('quiz', 'question'));
     }
 
-    public function editQuestion(Quiz $quiz, Question $question)
+    public function editQuestion(Quiz $quiz, Question $question, Request $request)
     {
+        $validatedData = $request->validate([
+            'question' => 'required',
+            'correct' => 'required',
+            'wrong1' => 'required',
+            'wrong2' => 'required',
+            'wrong3' => 'required',
+        ]);
+
         $question->question = request('question');
         $question->save();
         $answers = $question->answers()->get();
-        foreach ($answers as $answer) {
-            $answer->answer = request("$answer->id");
-            $answer->save();
+        foreach ($answers as $i => $answer) {
+            if($i === 0){
+                $answer->answer = request("correct");
+                $answer->save();
+            } else {
+                $answer->answer = request("wrong".$i);
+                $answer->save();
+            }
+           
         }
-        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Updated');
+        return redirect()->route('quiz.editForm', ['quiz' => $quiz->id])->with('status', 'Question Updated');
     }
 
     public function destroyQuestion(Quiz $quiz, Question $question)
@@ -84,11 +116,15 @@ class QuizController extends Controller
         }
         $question->delete();
 
-        return redirect("/edit-quiz/{$quiz->id}")->with('status', 'Question Deleted');
+        return redirect()->route('quiz.editForm', ['quiz' => $quiz->id])->with('status', 'Question Deleted');
     }
 
-    public function show(Quiz $quiz)
+    public function show(Quiz $quiz, Request $request)
     {
+        $validatedData = $request->validate([
+            'time' => 'required|numeric'
+        ]);
+
         $date = Carbon::now()->subMinutes(request('time'));
         $scores = $quiz->scores()->where('created_at', '>', $date)->get();
         $users = [];
@@ -99,14 +135,20 @@ class QuizController extends Controller
         return view('dashboard.scores', compact('scores', 'quiz'));
     }
 
-    public function present(Quiz $quiz)
+    public function present(Quiz $quiz, Request $request)
     {
+        $validatedData = $request->validate([
+            'time' => 'required|numeric'
+        ]);
         $time = request('time');
         return view('dashboard.present', ['time' => $time ]);
     }
 
-    public function presentData(Quiz $quiz)
+    public function presentData(Quiz $quiz, Request $request)
     {
+        $validatedData = $request->validate([
+            'time' => 'required|numeric'
+        ]);
         $date = Carbon::now()->subMinutes(request('time'));
         $scores = $quiz->scores()->where('created_at', '>', $date)->get();
         
@@ -137,7 +179,7 @@ class QuizController extends Controller
         }
         $quiz->delete();
 
-        return redirect("/admin")->with('status', 'Quiz Deleted');
+        return redirect()->route('admin.dashboard')->with('status', 'Quiz Deleted');
     }
 
 }

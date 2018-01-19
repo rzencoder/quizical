@@ -61,7 +61,7 @@ class AdminController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->back()->with("success", "Password changed successfully !");
+        return redirect()->route('admin.dashboard')->with("status", "Password changed successfully !");
 
     }
 
@@ -88,7 +88,7 @@ class AdminController extends Controller
         $user->name = $request->get('name');
         $user->save();
 
-        return redirect()->back()->with("success", "Details changed successfully !");
+        return redirect()->route('admin.dashboard')->with("status", "Details changed successfully!");
 
     }
 }

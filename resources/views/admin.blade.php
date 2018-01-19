@@ -10,13 +10,22 @@
                 </div>
                 <div class="dashboard-container">                
                     <h3>Welcome {{ Auth::user()->name }}</h3>
-                    <a href="/admin/update"><button class="btn btn-primary">Update Account</button></a>
-                    <a href="/admin/update/password"><button class="btn btn-secondary">Change Password</button></a>
-                    <a href=""><button class="btn btn-logout">Logout</button></a>
+                    <a href="{{ route('admin.changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
+                    <a href="{{ route('admin.changePasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
+                    <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
                     <div class="panel-body">
                         @if (session('status'))
                             <div class="alert alert-success">
                                 {{ session('status') }}
+                            </div>
+                        @endif
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
                             </div>
                         @endif
                     </div>
@@ -28,7 +37,7 @@
                     <div>Create New Quiz</div>
                 </div>
                 <div class="dashboard-container">
-                    <form action="/create-quiz" method="POST">
+                    <form action="{{ route('quiz.create') }}" method="POST">
                         {{ csrf_field() }}
                         <div class="new-quiz-container">
                             <div>
@@ -55,7 +64,7 @@
                             <div class="admin-quiz-list">
                                 <div class="admin-quiz-title">{{ $quiz->quiz }}</div>
                                 <div class="admin-quiz-list-btns">
-                                    <form method="POST" action="/show-results/{{$quiz->id}}">
+                                    <form method="POST" action="{{ route('quiz.showResults', ['id' => $quiz->id]) }}">
                                         {{ csrf_field() }}
                                         <div>
                                             <div>
@@ -71,7 +80,7 @@
                                             <button class="btn btn-primary" type="submit">See Results</button>
                                         </div>
                                     </form>
-                                    <form method="POST" action="/present-results/{{$quiz->id}}">
+                                    <form method="POST" action="{{ route('quiz.presentResults', ['id' => $quiz->id]) }}">
                                         {{ csrf_field() }}
                                         <div>
                                             <div>
@@ -88,8 +97,8 @@
                                         </div>
                                     </form>
                                     <div class="admin-list-btn-container">
-                                        <a href="edit-quiz/{{$quiz->id}}"><button class="btn btn-primary">Edit Quiz</button></a>
-                                        <form method="POST" action="/delete-quiz/{{$quiz->id}}">
+                                        <a href="{{ route('quiz.editForm', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Edit Quiz</button></a>
+                                        <form method="POST" action="{{ route('quiz.delete', ['id' => $quiz->id]) }}">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button class="btn btn-logout" type="submit">Delete</button>

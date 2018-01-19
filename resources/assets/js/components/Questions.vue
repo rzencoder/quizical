@@ -27,7 +27,7 @@
             <div class="modal-container">
                 <h2>You Scored</h2>
                 <h2 class="modal-score">{{ score }}/{{ quiz.questions.length }}</h2>
-                <a href="/home"><button class="btn btn-primary">Back to Dashboard</button></a>
+                <a href="/student"><button class="btn btn-primary">Back to Dashboard</button></a>
             </div>
         </div>
     </transition>
@@ -98,6 +98,7 @@
             endQuiz () {
                 window.clearInterval(this.interval);
                 this.disabled = true;
+                console.log(window.location.pathname + '/results');
                 axios.post(window.location.pathname + '/results', {
                     score: this.score, 
                     time: 60 - (this.date - this.time)
