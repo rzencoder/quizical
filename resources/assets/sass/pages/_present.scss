@@ -1,0 +1,92 @@
+@import '../helpers/variables';
+.panel-present {
+    background: $dark-blue;
+}
+
+.results-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.present-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.table-header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: $light-blue;
+    color: $white;
+    padding: 5px;
+    margin-bottom: 5px;
+    text-align: center;
+    text-shadow: 2px 2px $font-black;
+    font-family: $font-family-title;
+    font-size: 1.8rem;
+    > div {
+        width: 15%;
+        text-align: center;
+    }
+    > div:nth-child(2) {
+        width: 55%;
+        text-align: center;
+    }
+}
+
+.student {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    background: $pink;
+    color: $white;
+    padding: 5px;
+    margin: 5px 0;
+    border-radius: 10px;
+    text-shadow: 2px 2px $font-black;
+    font-family: $font-family-title;
+    font-size: 2rem;
+    text-align: center;
+    > div {
+        width: 15%;
+        text-align: center;
+    }
+    > div:nth-child(2) {
+        width: 55%;
+        text-align: center;
+    }
+}
+
+.fly-enter-active, .fly-leave-active {
+    transition: all 0.5s;
+}
+
+.fly-enter, .fly-leave-to {
+    transform: translate(-200px);
+    opacity: 0;
+}
+
+.gold {
+    background: gold;
+    font-size: 4rem;
+    @media (max-width: 500px) {
+        font-size: 2rem;
+    }
+}
+
+.silver {
+    background: silver;
+    font-size: 3.5rem;
+    @media (max-width: 500px) {
+        font-size: 2rem;
+    }
+}
+
+.bronze {
+    background: brown;
+    font-size: 3rem;
+    @media (max-width: 500px) {
+        font-size: 2rem;
+    }
+}

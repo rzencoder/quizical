@@ -12,6 +12,7 @@
 @import "components/navigation";
 @import "components/panels";
 @import "components/tables";
+@import "components/modals";
 //Layout
 @import "layouts/layout";
 @import "layouts/typography";
@@ -24,3 +25,5 @@
 @import "pages/new-question";
 @import "pages/scores";
 @import "pages/not-found";
+@import "pages/questions";
+@import "pages/present";
