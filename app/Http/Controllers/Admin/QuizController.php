@@ -21,7 +21,7 @@ class QuizController extends Controller
 
     public function newQuestion(Quiz $quiz)
     {       
-        return view('dashboard.new', compact('quiz'));
+        return view('teacher.questions.new', compact('quiz'));
     }
 
     public function create(Request $request)
@@ -41,7 +41,7 @@ class QuizController extends Controller
     public function edit(Quiz $quiz)
     {   
         $subjects = $this->subjects;
-        return view('quiz.edit', compact('quiz', 'subjects'));
+        return view('teacher.quiz.edit', compact('quiz', 'subjects'));
     }
 
     public function changeQuizName(Quiz $quiz, Request $request)
@@ -55,7 +55,7 @@ class QuizController extends Controller
         $quiz->category = request('category');
         $quiz->save();
         $subjects = $this->subjects;
-        return view('quiz.edit', compact('quiz', 'subjects'))->with('status', 'Quiz Updated');;
+        return view('teacher.quiz.edit', compact('quiz', 'subjects'))->with('status', 'Quiz Updated');;
     }
 
     public function store(Quiz $quiz, Request $request)
@@ -78,7 +78,7 @@ class QuizController extends Controller
 
     public function showEditQuestion(Quiz $quiz, Question $question)
     {
-        return view('questions.edit', compact('quiz', 'question'));
+        return view('teacher.questions.edit', compact('quiz', 'question'));
     }
 
     public function editQuestion(Quiz $quiz, Question $question, Request $request)
@@ -131,7 +131,7 @@ class QuizController extends Controller
             $score->name = $score->user()->get()[0]->name;
         }
         $scores = $scores->sortByDesc('score');
-        return view('dashboard.scores', compact('scores', 'quiz'));
+        return view('teacher.quiz.scores', compact('scores', 'quiz'));
     }
 
     public function present(Quiz $quiz, Request $request)
@@ -140,7 +140,7 @@ class QuizController extends Controller
             'time' => 'required|numeric'
         ]);
         $time = request('time');
-        return view('dashboard.present', ['time' => $time ]);
+        return view('teacher.quiz.present', ['time' => $time ]);
     }
 
     public function presentData(Quiz $quiz, Request $request)

@@ -23,7 +23,7 @@ class QuestionController extends Controller
         $user = Auth::user();
         $scores = $user->scores()->get();
         $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
-        return view('home', compact('quizzes', 'scores', 'subjects'));
+        return view('student.dashboard', compact('quizzes', 'scores', 'subjects'));
     }
 
     public function show(Quiz $quiz)
@@ -35,7 +35,7 @@ class QuestionController extends Controller
                 return redirect('home');
             }
         }
-        return view('questions.show', compact('quiz'));
+        return view('student.show', compact('quiz'));
     }
 
     public function questions(Quiz $quiz)

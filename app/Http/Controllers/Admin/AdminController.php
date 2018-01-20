@@ -30,7 +30,7 @@ class AdminController extends Controller
         $user = Auth::user();
         $quizzes = $user->quizzes()->get();
         $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
-        return view('admin', compact('quizzes', 'subjects'));
+        return view('teacher.dashboard', compact('quizzes', 'subjects'));
     }
 
     public function showChangePasswordForm()

@@ -7,7 +7,7 @@
         @component('components.messages')
                     
         @endcomponent
-        <present  :timerange={{ $time }}></present>
+        <present :timerange={{ $time }}></present>
     </div>
 </div>
 

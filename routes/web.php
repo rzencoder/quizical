@@ -58,7 +58,7 @@ Route::prefix('teacher')->group(function() {
 });
 
 Route::fallback(function () {
-    return response()->view('notFound', [], 404);
+    return response()->view('auth.notFound', [], 404);
 });
 
     

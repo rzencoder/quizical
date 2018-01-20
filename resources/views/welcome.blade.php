@@ -5,6 +5,7 @@
     <div class="welcome-heading-container">
         <h1>QUIZICAL</h1>
         <h4>The Classroom Quiz App</h4>
+        <div></div>
         <div>
             <button class="btn btn-primary">Students</button>
             <button class="btn btn-logout">Teachers</button>

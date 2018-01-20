@@ -4,7 +4,7 @@
 
 <div class="col-md-8">
     <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel-heading">
             <div>Teacher Dashboard</div>
         </div>
         <div class="dashboard-container">    
@@ -14,7 +14,7 @@
             <h3>Welcome {{ Auth::user()->name }}</h3>
             <a href="{{ route('admin.changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
             <a href="{{ route('admin.changePasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-            <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
+            <a href="{{ route('logout') }}"><button class="btn btn-logout">Logout</button></a>
         </div>
     </div>
 
@@ -41,7 +41,7 @@
     </div>
 
     <div class="panel panel-default">
-            <div class="panel-heading">
+        <div class="panel-heading">
             <div>Your Quizzes</div>
         </div>
         <div class="dashboard-container">

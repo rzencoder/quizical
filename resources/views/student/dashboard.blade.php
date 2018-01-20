@@ -12,7 +12,7 @@
             <div class="dashboard-btns">
                 <a href="{{ route('changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
                 <a href="{{ route('changeUserPasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-                <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
+                <a href="{{ route('logout') }}"><button class="btn btn-logout">Logout</button></a>
             </div>
             <div class="panel-body">
                 @component('components.messages')
@@ -31,8 +31,7 @@
                         data-toggle="collapse" href="#{{ $subject[0] }}" aria-expanded="false" aria-controls="{{ $subject[0] }}">
                         <span>
                             <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
-                        </span>
-                    
+                        </span>                  
                         <span>
                             {{ $subject[0] }}
                         </span>
@@ -66,8 +65,7 @@
                                     <a href="{{ route('quiz.show', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Start</button></a>
                                 </div>
                             @endif                     
-                        @endforeach
-                        
+                        @endforeach                       
                     </div>
                 </div>
             @endforeach
