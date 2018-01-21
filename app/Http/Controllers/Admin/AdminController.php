@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Quiz;
 use App\User;
+use App\Category;
 
 use Illuminate\Support\Facades\Hash;
 
@@ -29,7 +30,7 @@ class AdminController extends Controller
     {
         $user = Auth::user();
         $quizzes = $user->quizzes()->get();
-        $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
+        $subjects = Category::$subjects;
         return view('teacher.dashboard', compact('quizzes', 'subjects'));
     }
 
@@ -61,7 +62,7 @@ class AdminController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->route('admin.dashboard')->with("status", "Password changed successfully !");
+        return redirect()->route('admin.dashboard')->with("status", "Password changed successfully!");
 
     }
 

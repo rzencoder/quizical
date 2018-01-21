@@ -29,9 +29,9 @@
 }
 
 .btn-link {
-    color: $light-blue;
+    color: $dark-purple;
     &:hover {
-        background: lighten($light-blue, 10%);
-        color: $white;
+        color: lighten($dark-purple, 20%);
+        text-decoration: none;
     }
 }

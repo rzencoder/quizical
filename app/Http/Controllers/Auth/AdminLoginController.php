@@ -34,7 +34,7 @@ class AdminLoginController extends Controller
        }
     
        //unsuccessful redirect back
-       return redirect()->back()->withInput($request->only('email', 'remember'));
+       return redirect()->back()->with('error', 'Error logging in')->withInput($request->only('email', 'remember'));
     }
 
     public function logout()

@@ -1,6 +1,7 @@
 <template>
     <div>
         <div>
+            <div>{{ errors }}</div>
             <div v-if="quiz" class="time-container">
                 <div>Score: {{ score }}</div>
                 <div>Time Left: <span>{{ formattedTime }}</span></div>
@@ -47,7 +48,8 @@
                message: '',
                showModal: false,
                category: '',
-               disabled: false
+               disabled: false,
+               errors: ''
            }
         },
 
@@ -100,7 +102,10 @@
                     time: 60 - (this.date - this.time)
                 }).then(response => {
                     this.displayResult();
-                })
+                }).catch((data) => {
+                    console.log(data);
+                    this.errors = 'Error: ' + data.response.data.message;
+                });
             },
 
             displayResult () {          

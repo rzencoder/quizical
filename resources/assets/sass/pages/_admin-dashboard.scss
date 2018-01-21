@@ -1,6 +1,9 @@
 @import '../helpers/variables';
 .dashboard-container {
     padding: 5px 10px;
+    > a > button {
+        margin: 2.5px;
+    }
 }
 
 .admin-quiz-list {
@@ -53,6 +56,9 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    > button {
+        margin: 5px 0;
+    }
     >div>select {
         font-size: 1.2rem;
         padding: 5px;

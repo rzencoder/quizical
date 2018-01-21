@@ -9,22 +9,26 @@
         </div>
         <div class="dashboard-container">
             <h3>Welcome {{ Auth::user()->name }}</h3>
-            <div class="dashboard-btns">
-                <a href="{{ route('changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
-                <a href="{{ route('changeUserPasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-                <a href="{{ route('logout') }}"><button class="btn btn-logout">Logout</button></a>
-            </div>
             <div class="panel-body">
                 @component('components.messages')
                     
                 @endcomponent
             </div>
+            <div class="dashboard-btns">
+                <a href="{{ route('changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
+                <a href="{{ route('changeUserPasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
+                <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
+            </div>
+            
         </div>
     </div>
 
     <div class="panel panel-default">
         <div class="panel-heading">Latest Quizzes</div>
-        <div id="accordion" role="tablist" class="accordion">         
+
+        {{--  Accordion Menu  --}}
+        <div id="accordion" role="tablist" class="accordion">     
+            {{-- Loop through each subject to created colored subject headers    --}}
             @foreach ($subjects as $subject)
                 <div class="card">
                     <div class="category-header collapsed {{$subject[0]}}" role="tab" id="headingOne"
@@ -36,15 +40,20 @@
                             {{ $subject[0] }}
                         </span>
                     </div>
+                    {{--  Collapsable area of accordion menu  --}}
                     <div id="{{ $subject[0] }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
                         <div class="quiz-list-item quiz-list-header">
                             <div>Quiz</div>                                               
                             <div>Score</div>
                             <div>Time</div>
                         </div>
+                        {{--  Loop through each quiz  --}}
                         @foreach($quizzes as $quiz)
+                            {{--  Check if user has played any quizzes before  --}}
                             @if (count($scores) !== 0)
+                                {{--  Loop through user scores  --}}
                                 @for($i = 0; $i < count($scores); $i++)
+                                    {{--  If user has played quiz display score  --}}
                                     @if($scores[$i]->quiz_id === $quiz['id'] && $quiz['category'] === $subject[0])
                                         <div class="quiz-list-item">
                                             <div>{{ $quiz['quiz'] }}</div>                                               
@@ -52,6 +61,7 @@
                                             <div>{{ $scores[$i]->time }}s</div>                                                          
                                         </div>
                                         <?php break;?>
+                                    {{--  If user not played display stert button  --}}
                                     @elseif($i === count($scores) - 1 && $quiz['category'] === $subject[0])
                                         <div class="quiz-list-item">
                                             <span> {{ $quiz->quiz }} </span>

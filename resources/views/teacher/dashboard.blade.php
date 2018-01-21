@@ -7,14 +7,14 @@
         <div class="panel-heading">
             <div>Teacher Dashboard</div>
         </div>
-        <div class="dashboard-container">    
+        <div class="dashboard-container">                
+            <h3>Welcome {{ Auth::user()->name }}</h3>
             @component('components.messages')
                     
-            @endcomponent            
-            <h3>Welcome {{ Auth::user()->name }}</h3>
+            @endcomponent
             <a href="{{ route('admin.changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
             <a href="{{ route('admin.changePasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-            <a href="{{ route('logout') }}"><button class="btn btn-logout">Logout</button></a>
+            <a href="{{ route('admin.logout') }}"><button class="btn btn-logout">Logout</button></a>
         </div>
     </div>
 
@@ -27,8 +27,8 @@
                 {{ csrf_field() }}
                 <div class="new-quiz-container">
                     <div>
-                        <input type="text" name="quiz" id="" placeholder="New Quiz Name">
-                        <select name="category" id="">
+                        <input type="text" name="quiz" id="" placeholder="New Quiz Name" required>
+                        <select name="category" id="" required>
                             @foreach ($subjects as $subject)
                                 <option value="{{ $subject[0] }}">{{ $subject[0] }}</option>
                             @endforeach
@@ -55,7 +55,7 @@
                                 <div>
                                     <div>
                                         <label for="time">Display Results from:</label>
-                                        <select name="time" id="">
+                                        <select name="time" id="" required>
                                             <option value="60">Last Hour</option>
                                             <option value="1440">Today</option>
                                             <option value="10080">This Week</option>
@@ -71,7 +71,7 @@
                                 <div>
                                     <div>
                                         <label for="time">Present Results from:</label>
-                                        <select name="time" id="">
+                                        <select name="time" id="" required>
                                             <option value="60">Last Hour</option>
                                             <option value="1440">Today</option>
                                             <option value="10080">This Week</option>

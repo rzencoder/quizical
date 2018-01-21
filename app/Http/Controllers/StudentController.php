@@ -7,10 +7,11 @@ use Illuminate\Http\Request;
 use App\Question;
 use App\Quiz;
 use App\Score;
+use App\Category;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
-class QuestionController extends Controller
+class StudentController extends Controller
 {
     public function __construct()
     {
@@ -22,7 +23,7 @@ class QuestionController extends Controller
         $quizzes = Quiz::latest()->get()->sortBy('category');
         $user = Auth::user();
         $scores = $user->scores()->get();
-        $subjects = [['computing', 'laptop'], ['english', 'book'], ['geography', 'globe'], ['history', 'bank'], ['maths', 'calculator'], ['music', 'music'], ['science', 'flask'], ['technology', 'wrench']];
+        $subjects = Category::$subjects;
         return view('student.dashboard', compact('quizzes', 'scores', 'subjects'));
     }
 
@@ -50,8 +51,10 @@ class QuestionController extends Controller
 
     public function results(Quiz $quiz, Request $request)
     {
-        
-
+        $this->validate($request, [
+            'score' => 'required|numeric',
+            'time' => 'required|numeric'
+        ]);
         $score = request('score');
         $time = request('time');
         $quiz_id = $quiz->id;
@@ -68,7 +71,6 @@ class QuestionController extends Controller
 
     public function changePassword(Request $request)
     {
-
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
@@ -89,7 +91,7 @@ class QuestionController extends Controller
         $user->password = bcrypt($request->get('new-password'));
         $user->save();
 
-        return redirect()->route('student.dashboard')->with("status", "Password changed successfully !");
+        return redirect()->route('student.dashboard')->with("status", "Password changed successfully!");
 
     }
 
@@ -100,7 +102,6 @@ class QuestionController extends Controller
 
     public function changeUserDetails(Request $request)
     {
-
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
@@ -115,9 +116,7 @@ class QuestionController extends Controller
         $user = Auth::user();
         $user->name = $request->get('name');
         $user->save();
-
-        return redirect()->route('student.dashboard')->with("status", "Details changed successfully !");
-
+        return redirect()->route('student.dashboard')->with("status", "Details changed successfully!");
     }
 
 }

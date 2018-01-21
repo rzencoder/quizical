@@ -1,0 +1,8 @@
+@import '../helpers/variables';
+.login-links {
+    display: flex;
+    flex-direction: column;
+    >a {
+        text-align: left;
+    }
+}
