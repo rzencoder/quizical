@@ -49,7 +49,8 @@
                showModal: false,
                category: '',
                disabled: false,
-               errors: ''
+               errors: '',
+               resultsSent: false
            }
         },
 
@@ -97,15 +98,19 @@
             endQuiz () {
                 window.clearInterval(this.interval);
                 this.disabled = true;
-                axios.post(window.location.pathname + '/results', {
+                if (!this.resultsSent) {
+                    axios.post(window.location.pathname + '/results', {
                     score: this.score, 
                     time: 60 - (this.date - this.time)
-                }).then(response => {
-                    this.displayResult();
-                }).catch((data) => {
-                    console.log(data);
-                    this.errors = 'Error: ' + data.response.data.message;
-                });
+                    }).then(response => {
+                        this.displayResult();
+                        this.resultsSent = true;
+                    }).catch((data) => {
+                        console.log(data);
+                        this.errors = 'Error: ' + data.response.data.message;
+                    });
+                }
+                
             },
 
             displayResult () {          

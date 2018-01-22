@@ -1,6 +1,6 @@
 @import '../helpers/variables';
 .overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     background: #000;
     opacity: 0.5;
