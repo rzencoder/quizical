@@ -6,9 +6,6 @@ use Illuminate\Support\ServiceProvider;
 
 use Illuminate\Support\Facades\URL;
 
-if ($this->app->environment() == 'production') {
-    URL::forceScheme('https');
-}
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,6 +26,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if (env('APP_ENV') === 'production') {
+            $this->app['request']->server->set('HTTPS', true);
+        }
     }
 }
