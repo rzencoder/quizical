@@ -43278,7 +43278,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             showModal: false,
             category: '',
             disabled: false,
-            errors: ''
+            errors: '',
+            resultsSent: false
         };
     },
 
@@ -43330,15 +43331,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             window.clearInterval(this.interval);
             this.disabled = true;
-            axios.post(window.location.pathname + '/results', {
-                score: this.score,
-                time: 60 - (this.date - this.time)
-            }).then(function (response) {
-                _this3.displayResult();
-            }).catch(function (data) {
-                console.log(data);
-                _this3.errors = 'Error: ' + data.response.data.message;
-            });
+            if (!this.resultsSent) {
+                axios.post(window.location.pathname + '/results', {
+                    score: this.score,
+                    time: 60 - (this.date - this.time)
+                }).then(function (response) {
+                    _this3.displayResult();
+                    _this3.resultsSent = true;
+                }).catch(function (data) {
+                    console.log(data);
+                    _this3.errors = 'Error: ' + data.response.data.message;
+                });
+            }
         },
         displayResult: function displayResult() {
             var overlay = document.createElement("div");
