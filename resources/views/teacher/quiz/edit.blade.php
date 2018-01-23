@@ -14,7 +14,7 @@
             @endcomponent
          </div>
         <div class="panel-body edit-quiz-container">
-            <div>
+            <div class="update-quiz-form">
                 <h3>Update Quiz</h3>
                 <form action="{{ route('quiz.edit', ['id' => $quiz->id]) }}" method="post">
                 {{ csrf_field() }}
