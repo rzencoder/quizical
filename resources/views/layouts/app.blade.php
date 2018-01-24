@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ config('app.name', 'Quizical') }}</title>
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}">
     <!--Theme-->
     <meta name="theme-color" content="#0f292f">
     <!-- CSRF Token -->
