@@ -22,10 +22,11 @@ class AdminController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the application admin dashboard.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
         $user = Auth::user();
@@ -41,7 +42,6 @@ class AdminController extends Controller
 
     public function changePassword(Request $request)
     {
-
         if (!(Hash::check($request->get('current-password'), Auth::user()->password))) {
             // The passwords matches
             return redirect()->back()->with("error", "Your current password does not matches with the password you provided. Please try again.");
@@ -90,6 +90,5 @@ class AdminController extends Controller
         $user->save();
 
         return redirect()->route('admin.dashboard')->with("status", "Details changed successfully!");
-
     }
 }

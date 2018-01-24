@@ -18,8 +18,8 @@
                 <h3>Update Quiz</h3>
                 <form action="{{ route('quiz.edit', ['id' => $quiz->id]) }}" method="post">
                 {{ csrf_field() }}
-                    <input name="name" value="{{ $quiz->quiz }}" required></input>
-                    <select name="category" id="" required>
+                    <input name="name" value="{{ $quiz->quiz }}" required>
+                    <select name="category" required>
                         @foreach ($subjects as $subject)
                             @if ($subject[0] === $quiz->category)
                                 <option selected value="{{ $subject[0] }}">{{ $subject[0] }}</option>
@@ -34,7 +34,7 @@
 
             <div>
                 <h3>New Question</h3>
-                <a href="{{ route('question.create', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Add Question</button></a>
+                <a class="btn btn-primary" role="button" href="{{ route('question.create', ['id' => $quiz->id]) }}">Add Question</a>
             </div>
 
             <div>
@@ -43,7 +43,7 @@
                     <div class="edit-questions-list">
                         <div>{{$question->question}}</div>
                         <div>
-                            <a href="{{ route('question.editForm', ['quiz' => $quiz->id, 'question' => $question->id]) }}"><button class="btn btn-primary">Edit Question</button></a>
+                            <a class="btn btn-primary" role="button" href="{{ route('question.editForm', ['quiz' => $quiz->id, 'question' => $question->id]) }}">Edit Question</a>
                             <form method="POST" action="{{ route('question.delete', ['quiz' => $quiz->id, 'question' => $question->id]) }}">
                                 {{ csrf_field() }}
                                 {{ method_field('DELETE') }}

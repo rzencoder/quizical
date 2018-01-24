@@ -18,6 +18,7 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
 
+    // Show dashboard page
     public function index()
     {
         $quizzes = Quiz::latest()->get()->sortBy('category');
@@ -27,9 +28,11 @@ class StudentController extends Controller
         return view('student.dashboard', compact('quizzes', 'scores', 'subjects'));
     }
 
+    // Show Question page
     public function show(Quiz $quiz)
     {
         $user = Auth::user();
+        // Check if player has already played quiz
         $scores = $user->scores()->get();
         foreach ($scores as $score) {
             if ($quiz->id === $score->quiz_id) {
@@ -39,6 +42,7 @@ class StudentController extends Controller
         return view('student.show', compact('quiz'));
     }
 
+    // Return question data to vue
     public function questions(Quiz $quiz)
     {
         $questions = $quiz->questions;
@@ -49,6 +53,7 @@ class StudentController extends Controller
         return compact('quiz', 'questions', 'answers');
     }
 
+    // Store Quiz results from Vue
     public function results(Quiz $quiz, Request $request)
     {
         $this->validate($request, [

@@ -15,9 +15,9 @@
                 @endcomponent
             </div>
             <div class="dashboard-btns">
-                <a href="{{ route('changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
-                <a href="{{ route('changeUserPasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-                <a href="{{ route('user.logout') }}"><button class="btn btn-logout">Logout</button></a>
+                <a class="btn btn-primary" role="button" href="{{ route('changeUserDetailsForm') }}">Update Account</a>
+                <a class="btn btn-secondary" role="button" href="{{ route('changeUserPasswordForm') }}">Change Password</a>
+                <a class="btn btn-logout" role="button" href="{{ route('user.logout') }}">Logout</a>
             </div>
             
         </div>
@@ -31,8 +31,8 @@
             {{-- Loop through each subject to created colored subject headers    --}}
             @foreach ($subjects as $subject)
                 <div class="card">
-                    <div class="category-header collapsed {{$subject[0]}}" role="tab" id="headingOne"
-                        data-toggle="collapse" href="#{{ $subject[0] }}" aria-expanded="false" aria-controls="{{ $subject[0] }}">
+                    <a role="tab" data-toggle="collapse" href="#{{ $subject[0] }}" aria-expanded="false" aria-controls="{{ $subject[0] }}">
+                    <div class="category-header collapsed {{$subject[0]}}">
                         <span>
                             <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
                         </span>                  
@@ -40,8 +40,9 @@
                             {{ $subject[0] }}
                         </span>
                     </div>
+                    </a>
                     {{--  Collapsable area of accordion menu  --}}
-                    <div id="{{ $subject[0] }}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div id="{{ $subject[0] }}" class="collapse" role="tabpanel"  data-parent="#accordion">
                         <div class="quiz-list-item quiz-list-header">
                             <div>Quiz</div>                                               
                             <div>Score</div>
@@ -65,14 +66,14 @@
                                     @elseif($i === count($scores) - 1 && $quiz['category'] === $subject[0])
                                         <div class="quiz-list-item">
                                             <span> {{ $quiz->quiz }} </span>
-                                            <a href="{{ route('quiz.show', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Start</button></a>
+                                            <a class="btn btn-primary" role="button" href="{{ route('quiz.show', ['id' => $quiz->id]) }}">Start</a>
                                         </div>
                                     @endif
                                 @endfor  
                             @elseif($quiz['category'] === $subject[0])
                                 <div class="quiz-list-item">
                                     <span> {{ $quiz->quiz }} </span>
-                                    <a href="{{ route('quiz.show', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Start</button></a>
+                                    <a class="btn btn-primary" role="button" href="{{ route('quiz.show', ['id' => $quiz->id]) }}">Start</a>
                                 </div>
                             @endif                     
                         @endforeach                       

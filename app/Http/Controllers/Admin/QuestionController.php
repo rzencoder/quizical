@@ -17,11 +17,13 @@ class QuestionController extends Controller
         $this->middleware('auth:admin');
     }
 
+    // Create New Question
     public function create (Quiz $quiz)
     {
         return view('teacher.questions.new', compact('quiz'));
     }
 
+    // Store Question and Answers
     public function store(Quiz $quiz, Request $request)
     {
         $validatedData = $request->validate([
@@ -45,6 +47,7 @@ class QuestionController extends Controller
         return view('teacher.questions.edit', compact('quiz', 'question'));
     }
 
+    // Save edited question
     public function editStore(Quiz $quiz, Question $question, Request $request)
     {
         $validatedData = $request->validate([
@@ -58,6 +61,7 @@ class QuestionController extends Controller
         $question->question = request('question');
         $question->save();
         $answers = $question->answers()->get();
+        // Loop through answers and assign edited answer in place
         foreach ($answers as $i => $answer) {
             if ($i === 0) {
                 $answer->answer = request("correct");

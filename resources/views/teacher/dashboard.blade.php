@@ -12,9 +12,9 @@
             @component('components.messages')
                     
             @endcomponent
-            <a href="{{ route('admin.changeUserDetailsForm') }}"><button class="btn btn-primary">Update Account</button></a>
-            <a href="{{ route('admin.changePasswordForm') }}"><button class="btn btn-secondary">Change Password</button></a>
-            <a href="{{ route('admin.logout') }}"><button class="btn btn-logout">Logout</button></a>
+            <a class="btn btn-primary" role="button" href="{{ route('admin.changeUserDetailsForm') }}">Update Account</a>
+            <a class="btn btn-secondary" role="button" href="{{ route('admin.changePasswordForm') }}">Change Password</a>
+            <a class="btn btn-logout" role="button" href="{{ route('admin.logout') }}">Logout</a>
         </div>
     </div>
 
@@ -27,8 +27,8 @@
                 {{ csrf_field() }}
                 <div class="new-quiz-container">
                     <div>
-                        <input type="text" name="quiz" id="" placeholder="New Quiz Name" required>
-                        <select name="category" id="" required>
+                        <input type="text" name="quiz" placeholder="New Quiz Name" required>
+                        <select name="category" required>
                             @foreach ($subjects as $subject)
                                 <option value="{{ $subject[0] }}">{{ $subject[0] }}</option>
                             @endforeach
@@ -55,7 +55,7 @@
                                 <div>
                                     <div>
                                         <label for="time">Display Results from:</label>
-                                        <select name="time" id="" required>
+                                        <select name="time" required>
                                             <option value="60">Last Hour</option>
                                             <option value="1440">Today</option>
                                             <option value="10080">This Week</option>
@@ -71,7 +71,7 @@
                                 <div>
                                     <div>
                                         <label for="time">Present Results from:</label>
-                                        <select name="time" id="" required>
+                                        <select name="time" required>
                                             <option value="60">Last Hour</option>
                                             <option value="1440">Today</option>
                                             <option value="10080">This Week</option>
@@ -83,7 +83,7 @@
                                 </div>
                             </form>
                             <div class="admin-list-btn-container">
-                                <a href="{{ route('quiz.editForm', ['id' => $quiz->id]) }}"><button class="btn btn-primary">Edit Quiz</button></a>
+                                <a class="btn btn-primary" role="button" href="{{ route('quiz.editForm', ['id' => $quiz->id]) }}">Edit Quiz</a>
                                 <form method="POST" action="{{ route('quiz.delete', ['id' => $quiz->id]) }}">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}

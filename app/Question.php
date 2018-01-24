@@ -24,7 +24,6 @@ class Question extends Model
             'answer' => $answer,
             'correct' => $correct
         ]);
-
     }
 
 }

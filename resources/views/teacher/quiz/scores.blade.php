@@ -28,7 +28,7 @@
                     @endforeach
                 </tbody>
             </table>            
-            <a href="{{ route('admin.dashboard') }}"><button class="btn btn-primary">Back to Dashboard</button></a>
+            <a class="btn btn-primary" role="button" href="{{ route('admin.dashboard') }}">Back to Dashboard</a>
         </div>       
     </div>
 </div>
