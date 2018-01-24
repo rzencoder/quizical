@@ -119,6 +119,7 @@ class QuizController extends Controller
             }
             $question->delete();
         }
+        $quiz->scores()->delete();
         $quiz->delete();
 
         return redirect()->route('admin.dashboard')->with('status', 'Quiz Deleted');
