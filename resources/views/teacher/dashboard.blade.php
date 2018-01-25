@@ -48,7 +48,14 @@
             @if(isset($quizzes))
                 @foreach($quizzes as $quiz)
                     <div class="admin-quiz-list">
-                        <div class="admin-quiz-title">{{ $quiz->quiz }}</div>
+                        <div class="admin-quiz-title {{ $quiz->category }}">
+                            @foreach ($subjects as $subject)
+                                @if ($subject[0] === $quiz->category)
+                                    <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
+                                @endif                              
+                            @endforeach
+                            {{ $quiz->quiz }}
+                        </div>
                         <div class="admin-quiz-list-btns">
                             <form method="POST" action="{{ route('quiz.showResults', ['id' => $quiz->id]) }}">
                                 {{ csrf_field() }}

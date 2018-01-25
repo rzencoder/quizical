@@ -30,7 +30,7 @@ class AdminController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $quizzes = $user->quizzes()->get();
+        $quizzes = $user->quizzes()->get()->sortBy('category');;
         $subjects = Category::$subjects;
         return view('teacher.dashboard', compact('quizzes', 'subjects'));
     }

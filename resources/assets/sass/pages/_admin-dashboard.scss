@@ -14,11 +14,15 @@
     border-radius: 5px;
     .admin-quiz-title {
         font-family: $font-family-title;
-        background: $dark-blue;
+        text-shadow: 2px 2px 1px #222;
         border-radius: 5px 5px 0 0;
         margin: 0;
         padding: 5px 10px;
         font-size: 2.5rem;
+        border-bottom: 3px solid $dark-blue;
+        i {
+            margin-right: 5px;
+        }
     }
     select {
         color: $font-black;
