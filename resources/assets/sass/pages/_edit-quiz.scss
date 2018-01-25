@@ -1,4 +1,10 @@
 @import '../helpers/variables';
+.edit-quiz-welcome {
+    .panel-subheading {
+        padding: 10px;
+        text-shadow: 2px 2px 1px #222;
+    }
+}
 
 .edit-quiz-container {
     h3 {
@@ -16,7 +22,6 @@
         padding-bottom: 10px;
         border-bottom: 2px solid $dark-blue;
     }
-
     .alert {
         margin-bottom: 0;
     }
@@ -42,7 +47,7 @@
         padding: 5px;
         justify-content: flex-end;
         flex-wrap: wrap;
-        @media (max-width: 370px){
+        @media (max-width: 370px) {
             font-size: 1.6rem;
             padding: 5px 0;
         }

@@ -3,10 +3,24 @@
 @section('content')
 
 <div class="col-md-8">
-    <div class="panel panel-default">
-        <div class="panel-heading">Edit Question</div>
+    <div class="panel panel-default edit-question-container">
+        <div class="panel-heading">Edit Question #
+            @foreach ($quiz->questions as $q)
+                @if ($q->id === $question->id)
+                    {{ $loop->iteration }}
+                @endif
+            @endforeach
+        </div>
+        <div class="panel-subheading {{ $quiz->category }}">
+        @foreach ($subjects as $subject)
+                @if ($subject[0] === $quiz->category)
+                    <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
+                @endif                              
+            @endforeach
+            {{ $quiz->quiz }}
+        </div>
         @component('components.messages')
-                
+      
         @endcomponent
         <div class="panel-body">
             <form action="{{ route('question.edit', ['quiz' => $quiz->id, 'question' => $question->id]) }}" method="post">

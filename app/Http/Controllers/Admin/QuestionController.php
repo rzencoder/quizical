@@ -20,7 +20,8 @@ class QuestionController extends Controller
     // Create New Question
     public function create (Quiz $quiz)
     {
-        return view('teacher.questions.new', compact('quiz'));
+        $subjects = Category::$subjects;
+        return view('teacher.questions.new', compact('quiz', 'subjects'));
     }
 
     // Store Question and Answers
@@ -44,7 +45,8 @@ class QuestionController extends Controller
 
     public function edit(Quiz $quiz, Question $question)
     {
-        return view('teacher.questions.edit', compact('quiz', 'question'));
+        $subjects = Category::$subjects;
+        return view('teacher.questions.edit', compact('quiz', 'question', 'subjects'));
     }
 
     // Save edited question

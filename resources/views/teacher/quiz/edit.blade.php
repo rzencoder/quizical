@@ -3,10 +3,15 @@
 @section('content')
 
 <div class="col-md-8">
-    <div class="panel panel-default">
+    <div class="panel panel-default edit-quiz-welcome">
         <div class="panel-heading">Edit Quiz</div>
         <div class="panel-subheading {{ $quiz->category }}">
-            <div>{{ $quiz->quiz }}</div>
+            @foreach ($subjects as $subject)
+                @if ($subject[0] === $quiz->category)
+                    <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
+                @endif                              
+            @endforeach
+            {{ $quiz->quiz }}
         </div>
         <div class="panel-body">
             @component('components.messages')
