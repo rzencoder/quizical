@@ -18,6 +18,14 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "marked": "^0.3.12"
+        "cryptiles": "^4.1.2",
+        "deep-extend": "^0.6.0",
+        "hoek": "^5.0.4",
+        "macaddress": "^0.2.9",
+        "marked": "^0.3.12",
+        "randomatic": "^3.1.0",
+        "sshpk": "^1.15.1",
+        "ssri": "^6.0.1",
+        "url-parse": "^1.4.3"
     }
 }
