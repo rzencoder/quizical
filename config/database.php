@@ -20,7 +20,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql-prod'),
+    'default' => env('DB_CONNECTION', 'mysql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ return [
             'prefix' => '',
         ],
 
-        'mysql-prod' => [
+        'mysql' => [
             'driver' => 'mysql',
             'host' => $server,
             'database' => $db,
@@ -59,7 +59,7 @@ return [
             'engine' => null,
         ],
 
-        'mysql' => [
+        'mysql-dev' => [
             'driver' => 'mysql',
             'host' => env('DB_HOST', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
