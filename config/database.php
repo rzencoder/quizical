@@ -7,8 +7,6 @@ $username = $url["user"];
 $password = $url["pass"];
 $db = substr($url["path"], 1);
 
-
-
 return [
 
     /*
@@ -22,7 +20,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mysql-dev'),
 
     /*
     |--------------------------------------------------------------------------
