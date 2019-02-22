@@ -4,16 +4,8 @@
 
 <div class="col-md-8">
     <div class="panel panel-default">
-        <div class="panel-heading">New Question - Question
-            {{ count($quiz->questions) + 1 }}
-        </div>
-        <div class="panel-subheading {{ $quiz->category }}">
-        @foreach ($subjects as $subject)
-                @if ($subject[0] === $quiz->category)
-                    <i class="category-icon fa fa-{{ $subject[1] }}" aria-hidden="true"></i>
-                @endif                              
-            @endforeach
-            {{ $quiz->quiz }}
+        <div class="panel-heading {{ $quiz->category }}">
+            <div>{{ $quiz->quiz }}</div>
         </div>
         <div class="new-question-container">         
             <form method="POST" action="{{ route('question.store', ['quiz' => $quiz->id]) }}">
