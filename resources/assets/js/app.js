@@ -14,8 +14,8 @@ window.Vue = require('vue/dist/vue.common.js');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('questions', require('./components/Questions.vue'));
-Vue.component('present', require('./components/Present.vue'));
+Vue.component('questions', require('./components/Questions.vue').default);
+Vue.component('present', require('./components/Present.vue').default);
 
 const app = new Vue({
     el: '#app'
