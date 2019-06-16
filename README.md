@@ -2,10 +2,6 @@
 
 First app using Laravel Framework. An app for teachers to set and see results of quizzes for students
 
-## Demo 
-
-https://quizical-uk.herokuapp.com/
-
 ## Built With
 
 * [Laravel](https://laravel.com/) - Web Framework
