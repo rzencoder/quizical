@@ -12,7 +12,7 @@
         "axios": "^0.17",
         "bootstrap-sass": "^3.3.7",
         "cross-env": "^5.1",
-        "jquery": "^3.2",
+        "jquery": "^3.5",
         "laravel-mix": "^4.0.14",
         "lodash": "^4.17.11",
         "resolve-url-loader": "^2.3.1",
