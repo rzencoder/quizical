@@ -27,7 +27,7 @@
         "deep-extend": "^0.6.0",
         "hoek": "^5.0.4",
         "macaddress": "^0.2.9",
-        "marked": "^0.3.12",
+        "marked": "^4.0.10",
         "randomatic": "^3.1.0",
         "sshpk": "^1.15.1",
         "ssri": "^6.0.1",
